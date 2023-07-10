@@ -4,25 +4,25 @@ public class Max_Consecutive_Ones {
 
     // Method 1 - Brute Force (Using Temporary Array)
     // Time - O(2N), Space - O(N)
-    static int hash(int[] arr, int n) {
-        int[] temp = new int[n];
-
-        for (int i=0; i<n; i++) {
-            temp[i] = arr[i];
-        }
-
-        int tempSize = temp.length;
-        int count = 0;
-
-        for (int i=0; i<tempSize; i++) {
-            if (temp[i] == 1) {
-                count++;
-            } else if (temp[i] == 0) {
-                count = 0;
-            }
-        }
-        return count;
-    }
+//    static int max(int[] arr, int n) {
+//        int[] temp = new int[n];
+//
+//        for (int i=0; i<n; i++) {
+//            temp[i] = arr[i];
+//        }
+//
+//        int tempSize = temp.length;
+//        int count = 0;
+//
+//        for (int i=0; i<tempSize; i++) {
+//            if (temp[i] == 1) {
+//                count++;
+//            } else if (temp[i] == 0) {
+//                count = 0;
+//            }
+//        }
+//        return count;
+//    }
 
     // Method 2 - Optimal Solution (Using 2 Pointers)
     // Time - O(N), Space - O(1)
