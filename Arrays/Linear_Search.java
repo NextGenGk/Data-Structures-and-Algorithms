@@ -20,3 +20,5 @@ public class Linear_Search {
 3. If yes, return 1.
 4. If no, return -1.
  */
+
+// Striver (Video Link) : https://youtu.be/wvcQg43_V8U

@@ -65,3 +65,5 @@ public class Check_if_Array_is_Sorted_or_Not {
 4. If the whole array is traversed successfully or the size of the given array is zero or one
    (i.e N = 0 or N = 1). Then we will return True else return False.
  */
+
+// Striver Video Link : https://youtu.be/37E9ckMDdTk
