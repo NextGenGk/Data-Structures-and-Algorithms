@@ -76,3 +76,5 @@ public class Max_Consecutive_Ones {
 5. If the element is 0, then reset the count to 0.
 6. Return the max.
  */
+
+// Striver - (Video Link) https://youtu.be/bYWLJb3vCWY

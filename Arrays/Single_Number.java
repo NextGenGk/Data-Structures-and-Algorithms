@@ -125,3 +125,5 @@ public class Single_Number {
 3. xor = xor ^ arr[i].
 4. Return xor.
  */
+
+// Striver - (Video Link) https://youtu.be/bYWLJb3vCWY
