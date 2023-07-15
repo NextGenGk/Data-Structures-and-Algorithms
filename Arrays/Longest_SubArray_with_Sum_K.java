@@ -1,8 +1,6 @@
 package Arrays;
 
-import java.util.HashMap;
-
-public class SubArray_Sum_Equals_K {
+public class Longest_SubArray_with_Sum_K {
 
 //    // Method 1 - Brute Force (Using 3 for Loops)
 //    // Time - O(N^3), Space - O(1)
