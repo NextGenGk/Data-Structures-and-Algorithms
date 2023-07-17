@@ -65,3 +65,5 @@ public class Variation2 {
 3. Inside the loop, we will use the above-said formula to print the element. We will multiply the previous answer by (n-i) and then divide it by i itself.
 4. Thus, the entire row will be printed.
  */
+
+// Striver : (Video Explanation) https://youtu.be/bR7mQgwQ_o8

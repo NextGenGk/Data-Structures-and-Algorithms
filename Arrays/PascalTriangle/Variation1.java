@@ -45,3 +45,5 @@ public class Variation1 {
 3. The loop will run from 0 to r. And in each iteration, we will multiply (n-i) with the result and divide the result by (i+1).
 4. Finally, the calculated value of the combination will be our answer.
  */
+
+// Striver : (Video Explanation) https://youtu.be/bR7mQgwQ_o8
