@@ -33,7 +33,7 @@ public class Three_Sum {
     // Method 2 - Better Solution
     // Time Complexity: O(N^2 * log m), Space Complexity: O(N) + (no. of triplets) * 2
 //    static List<List<Integer>> threeSum(int[] arr) {
-//        HashSet<List<Integer>> set = new HashSet<>();
+//        HashSet<List<Integer>> mainSet = new HashSet<>();
 //
 //        int n = arr.length;
 //
@@ -48,12 +48,12 @@ public class Three_Sum {
 //                    tempList.add(arr[j]);
 //                    tempList.add(third);
 //                    Collections.sort(tempList);
-//                    set.add(tempList);
+//                    mainSet.add(tempList);
 //                }
 //                hashSet.add(arr[j]);
 //            }
 //        }
-//        List<List<Integer>> ans = new ArrayList<>(set);
+//        List<List<Integer>> ans = new ArrayList<>(mainSet);
 //        return ans;
 //    }
 
