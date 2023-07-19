@@ -195,3 +195,5 @@ consider the elements that are in between the indices j and k.
 target we will sort this quadruplet and insert it in the set data structure.
 7. Finally, we will return a list of stored quadruplets.
  */
+
+// Striver (Video Explanation) : https://youtu.be/eD95WRfh81c
