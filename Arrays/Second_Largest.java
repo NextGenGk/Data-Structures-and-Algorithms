@@ -103,4 +103,4 @@ element’s value
 6. Print the sMax variable.
  */
 
-// Striver - https://www.youtube.com/watch?v=37E9ckMDdTk
+// Striver (Video Explanation) - https://www.youtube.com/watch?v=37E9ckMDdTk
