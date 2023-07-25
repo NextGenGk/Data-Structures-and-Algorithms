@@ -48,7 +48,7 @@ public class Merge_Overlapping_Intervals {
         }
         return ans;
     }
-
+    // Method 2 : Optimal Solution
     static List<List<Integer>> mergeIntervals1(int[][] arr) {
         int n = arr.length;
 
