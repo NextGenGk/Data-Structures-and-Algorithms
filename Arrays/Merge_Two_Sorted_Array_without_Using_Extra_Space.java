@@ -151,6 +151,11 @@ public class Merge_Two_Sorted_Array_without_Using_Extra_Space {
     }
 }
 
+// Output:
+// The merged arrays are:
+// arr1[] = 1 2 3 4
+// arr2[] = 8 9 10
+
 // Algorithm : Brute Force (Using 3rd array)
 /*
 1. We will first declare a third array, arr3[] of size n+m, and two pointers i.e. left and right, one pointing to the
