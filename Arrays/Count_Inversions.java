@@ -92,6 +92,15 @@ public class Count_Inversions {
     }
 }
 
+/*
+What is an inversion of an array? Definition: for all i & j < size of array, if i < j then you have to
+find pair (A[i],A[j]) such that A[j] < A[i].
+
+Example:
+Input: [6, 3, 9, 5, 2, 8]
+Output: 8
+ */
+
 // Output:
 // 8
 
