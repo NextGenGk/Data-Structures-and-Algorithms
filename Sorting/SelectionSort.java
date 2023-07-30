@@ -43,6 +43,11 @@ public class SelectionSort {
 
 // In Selection Sort - Find the minimum elements from an array, and swap with its correct position
 
+// Output ->
+/*
+1 2 3 7 8
+ */
+
 // Algorithms (approach) ->
 /*
 1.  Initialize minimum value(min_idx) to location 0

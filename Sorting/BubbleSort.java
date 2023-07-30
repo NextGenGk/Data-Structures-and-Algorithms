@@ -42,6 +42,9 @@ public class BubbleSort {
 
 // In Bubble Sort - Push the maximum element to the last, using adjacent swaps
 
+// Output:
+// 1 2 4 8 9
+
 // Algorithms (Approach) ->
 /*
 1. Outer loop for index - 1 element
