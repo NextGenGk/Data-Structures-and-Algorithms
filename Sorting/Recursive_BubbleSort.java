@@ -38,6 +38,8 @@ public class Recursive_BubbleSort {
     }
 }
 
+// In Bubble Sort - Push the maximum element to the last, using adjacent swaps
+
 // Algorithm (Approach) ->
 /*
 The approach will be the following:

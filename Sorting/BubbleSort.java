@@ -40,7 +40,7 @@ public class BubbleSort {
     }
 }
 
-// In Bubble Sort - Push the maximum element in the last using adjacent swaps
+// In Bubble Sort - Push the maximum element to the last, using adjacent swaps
 
 // Algorithms (Approach) ->
 /*

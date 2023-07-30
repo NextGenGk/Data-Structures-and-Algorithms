@@ -44,6 +44,8 @@ public class Recursive_BubbleSort_Optimize {
     }
 }
 
+// In Bubble Sort - Push the maximum element to the last, using adjacent swaps
+
 // Time & Space Complexity
 /*
 Time Complexity: O(N2)
