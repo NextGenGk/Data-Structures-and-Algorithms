@@ -38,6 +38,13 @@ public class InsertionSort {
     }
 }
 
+// In Insertion Sort - Take an element from unsorted array and insert it at its correct position in sorted array.
+
+// Output ->
+/*
+1 4 6 8 9
+ */
+
 // Algorithms (approach) ->
 /*
  To sort an array of size N in ascending order:
