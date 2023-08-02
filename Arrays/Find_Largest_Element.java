@@ -7,12 +7,12 @@ public class Find_Largest_Element {
     // Find Largest Element Function
     public static int findLargest(int[] arr) {
 
-        // Method 1
+        // Method 1 : Brute Force
 //        Arrays.sort(arr);
 //        return arr[arr.length-1];
 
 
-        // Method 2
+        // Method 2 : Optimal Solution
         int max = arr[0];
         for(int i=1; i< arr.length; i++) {
             if (arr[i] > max) {

@@ -61,6 +61,12 @@ public class Left_Rotate_an_Array_by_K_Place {
     }
 }
 
+// Output -
+/*
+After Rotating the elements to left
+3 4 5 6 7 1 2
+ */
+
 // Algorithm: Brute Force (Using Temporary Array)
 /*
 1. Copy the first k elements into the temp array.
