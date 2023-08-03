@@ -47,7 +47,7 @@ public class Second_Largest {
 //        return sLargest;
 //    }
 
-    // Method 3 - Better Solution - Time - O(N), Space - O(1)
+    // Method 3 - Optimal Solution - Time - O(N), Space - O(1)
     public static int secondLargest(int[] arr) {
         int n = arr.length;
 
@@ -91,7 +91,7 @@ public class Second_Largest {
 4. Print the max variable.
  */
 
-// Algorithm - Best Solution
+// Algorithm - Optimal Solution
 /*
 1. Create a max variable and initialize it with arr[0].
 2. Create a sMax variable and initialize it with Integer.MIN_VALUE.
@@ -103,4 +103,4 @@ element’s value
 6. Print the sMax variable.
  */
 
-// Striver - https://www.youtube.com/watch?v=37E9ckMDdTk
+// Striver (Video Explanation) - https://www.youtube.com/watch?v=37E9ckMDdTk

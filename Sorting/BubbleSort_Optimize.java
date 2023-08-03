@@ -37,6 +37,10 @@ public class BubbleSort_Optimize {
     }
 }
 
+// In Bubble Sort - Push the maximum element to the last, using adjacent swaps
+
+// Output:
+// 1 2 4 8 9
 
 // Algorithms (Approach) ->
 /*
