@@ -57,6 +57,12 @@ public class Right_Rotate_an_Array_by_K_Place {
     }
 }
 
+// Output -
+/*
+After Rotating the elements to left
+6 7 1 2 3 4 5
+ */
+
 // Algorithm: Brute Force (Using Temporary Array)
 /*
 1. Create a temporary array of size k and store the last k elements of the given array in it.
