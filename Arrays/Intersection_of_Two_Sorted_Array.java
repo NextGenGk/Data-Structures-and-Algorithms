@@ -68,6 +68,11 @@ public class Intersection_of_Two_Sorted_Array {
     }
 }
 
+// Output -
+/*
+Intersection of the two arrays: 1 2 3
+ */
+
 // Algorithm: Brute Force (Using Temporary Array)
 /*
 1. Create a list.
