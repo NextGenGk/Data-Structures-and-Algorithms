@@ -92,6 +92,11 @@ public class Missing_Number {
     }
 }
 
+// Output -
+/*
+The missing number is: 3
+ */
+
 // Algorithm: Brute Force (Using Linear Search)
 /*
 1. We will run a loop(say i) from 1 to N.
