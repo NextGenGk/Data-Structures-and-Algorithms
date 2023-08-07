@@ -51,6 +51,11 @@ is greater than or equal to a given key i.e. x.
 
 The lower bound is the smallest index, ind, where arr[ind] >= x. But if any such index is not found, the lower
 bound algorithm returns 'n' i.e. size of the given array.
+
+// Idea
+
+The lower bound algorithm returns the first occurrence of the target number if the number is present and otherwise,
+it returns the nearest greater element of the target number.
  */
 
 // Algorithm : Brute Force -
