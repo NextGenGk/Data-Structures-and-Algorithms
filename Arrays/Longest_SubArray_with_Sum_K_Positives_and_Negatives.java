@@ -69,6 +69,15 @@ public class Longest_SubArray_with_Sum_K_Positives_and_Negatives {
         }
         return maxLen;
     }
+
+    // Main Function
+    public static void main(String[] args) {
+        int[] a = { -1, 1, 1};
+        int n = a.length;
+        int k = 1;
+        int len = lenOfLongSubarr(a, n, k);
+        System.out.println("The length of the longest subarray is: " + len);
+    }
 }
 
 // Algorithm: Brute Force (Using 3 for Loops)
