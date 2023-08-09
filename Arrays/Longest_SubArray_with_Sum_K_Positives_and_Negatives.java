@@ -93,7 +93,7 @@ public class Longest_SubArray_with_Sum_K_Positives_and_Negatives {
 3. Return len
  */
 
-// Algorithm: Better Solution (Using HashMap)
+// Algorithm: Optimal Solution (Using HashMap)
 // Edge Case - Positives, Negatives
 //           [2,0,0,3]   [-1,1,1]
 /*
