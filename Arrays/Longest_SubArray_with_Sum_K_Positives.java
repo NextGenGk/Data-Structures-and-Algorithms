@@ -1,6 +1,6 @@
 package Arrays;
 
-public class Longest_SubArray_with_Sum_K {
+public class Longest_SubArray_with_Sum_K_Positives {
 
 //    // Method 1 - Brute Force (Using 3 for Loops)
 //    // Time - O(N^3), Space - O(1)
