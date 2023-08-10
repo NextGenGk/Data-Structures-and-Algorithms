@@ -59,7 +59,7 @@ difference between the lower and upper bound is in the condition. For the lower 
 
 // Algorithm : Brute Force -
 /*
-During this traversal, each element will be compared with the target value, x. The index, i, where the condition
+1. During this traversal, each element will be compared with the target value, x. The index, i, where the condition
 arr[i] > x is first satisfied, will be the answer.
  */
 
