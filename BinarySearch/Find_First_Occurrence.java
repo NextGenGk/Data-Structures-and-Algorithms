@@ -15,6 +15,8 @@ public class Find_First_Occurrence {
 //        return -1;
 //    }
 
+    // Method 2 : Optimal Solution
+    // Time : O(log2N), Space - O(1)
     static int findFirstOccurrence(int[] arr, int target) {
         int n = arr.length;
 
