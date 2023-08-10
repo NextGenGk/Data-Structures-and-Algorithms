@@ -58,7 +58,7 @@ public class Find_First_and_Last_Occurrences {
     }
 
     // Method 2 : Optimal Solution
-    // time - O(logN), Space - O(1)
+    // time - 2 * O(log2N), Space - O(1)
     static int[] findFirstAndLast(int[] arr, int n, int target) {
         int lb = lowerBound(arr, n, target);
         if (lb == n || arr[lb] != target) return new int[]{-1, -1};
