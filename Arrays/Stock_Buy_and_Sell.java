@@ -74,6 +74,7 @@ public class Stock_Buy_and_Sell {
  */
 
 // Algorithm: Better Solution (Using temp array)
+// Idea - Find the maximum element in the right side
 /*
 1. Initialize temp array of size n
 2. Initialize temp[n-1] = arr[n-1]
