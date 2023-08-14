@@ -38,7 +38,7 @@ public class Find_Largest_Element {
 3. For Sorting Method:
 
 Time Complexity: O(N*log(N))
-Space Complexity: O(n)
+Space Complexity: O(N)
 */
 
 // Approach
