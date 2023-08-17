@@ -77,7 +77,7 @@ public class Next_Permutation {
 4. Sort the arr in ascending order from idx+1 to n-1, so the next permutation is the smallest possible permutation
  */
 
-// Algorithm + Intution:
+// Algorithm + Intuition:
 /*
 1. Find the break-point, i: Break-point means the first index i from the back of the given array
 where arr[i] becomes smaller than arr[i+1].
