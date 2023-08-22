@@ -1,4 +1,4 @@
-package BinarySearch;
+package BinarySearch.BS_on_Answers;
 
 public class Koko_Eating_Bananas {
 
@@ -118,3 +118,5 @@ calculateTotalHours(a[], mid):
 5. Finally, outside the loop, we will return the value of low as the pointer will be pointing to the answer.
 The steps from 2-4 will be inside a loop and the loop will continue until low crosses high.
  */
+
+// Striver (Video Explanation) : https://youtu.be/qyfekrNni90
