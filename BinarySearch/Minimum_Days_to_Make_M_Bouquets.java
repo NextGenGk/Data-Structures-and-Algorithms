@@ -20,7 +20,7 @@ public class Minimum_Days_to_Make_M_Bouquets {
         return noOfB >= m;
     }
 
-    //
+    // Main Solution
     public static int roseGarden(int[] arr, int k, int m) {
         long val = (long) m * k;
         int n = arr.length; // Size of the array
