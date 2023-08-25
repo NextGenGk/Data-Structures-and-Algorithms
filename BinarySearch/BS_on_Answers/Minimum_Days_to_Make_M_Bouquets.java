@@ -1,4 +1,4 @@
-package BinarySearch;
+package BinarySearch.BS_on_Answers;
 
 public class Minimum_Days_to_Make_M_Bouquets {
 
