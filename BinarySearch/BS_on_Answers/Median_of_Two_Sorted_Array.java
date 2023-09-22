@@ -246,10 +246,10 @@ How to solve the problem using the above observations:
 merged array containing the formed left half is sorted, the formation is valid.
     1. How to check if the merged array is sorted without forming the array:
     In order to check we will consider 4 elements, i.e. l1, l2, r1, r2.
-        l1 = the maximum element belonging to arr1[] of the left half.
-        l2 = the maximum element belonging to arr2[] of the left half.
-        r1 = the minimum element belonging to arr1[] of the right half.
-        r1 = the minimum element belonging to arr2[] of the right half.
+        1. l1 = the maximum element belonging to arr1[] of the left half.
+        2. l2 = the maximum element belonging to arr2[] of the left half.
+        3. r1 = the minimum element belonging to arr1[] of the right half.
+        4. r1 = the minimum element belonging to arr2[] of the right half.
 
 How to apply Binary search to form the left half:
 
