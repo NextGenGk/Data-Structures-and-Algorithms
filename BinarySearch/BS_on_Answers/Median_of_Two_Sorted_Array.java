@@ -311,3 +311,5 @@ Eliminate the halves based on the following conditions:
 7. Finally, outside the loop, we will include a dummy return statement just to avoid warnings or errors.
 The steps from 4-6 will be inside a loop and the loop will continue until low crosses high.
  */
+
+// Video Explanation (Striver) : https://youtu.be/NTop3VTjmxk
