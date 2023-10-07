@@ -29,54 +29,54 @@ public class Search_in_a_2D_Matrix {
     // binary search rather we are only applying it once for a particular row. That is why the
     // time complexity is O(N + logM) instead of O(N*logM).
     // Space : O(1) as we are not using any extra space.
-    public static boolean binarySearch(ArrayList<Integer> nums, int target) {
-        int n = nums.size(); //size of the array
-        int low = 0, high = n - 1;
+//    // Binary Search
+//    public static boolean binarySearch(ArrayList<Integer> nums, int target) {
+//        int n = nums.size(); //size of the array
+//        int low = 0, high = n - 1;
+//
+//        // Perform the steps:
+//        while (low <= high) {
+//            int mid = (low + high) / 2;
+//            if (nums.get(mid) == target) return true;
+//            else if (target > nums.get(mid)) low = mid + 1;
+//            else high = mid - 1;
+//        }
+//        return false;
+//    }
+//
+//    // Search in a 2D matrix Function
+//    public static boolean searchMatrix(ArrayList<ArrayList<Integer>> matrix, int target) {
+//        int n = matrix.size();
+//        int m = matrix.get(0).size();
+//
+//        for (int i = 0; i < n; i++) {
+//            if (matrix.get(i).get(0) <= target && target <= matrix.get(i).get(m - 1)) {
+//                return binarySearch(matrix.get(i), target);
+//            }
+//        }
+//        return false;
+//    }
 
-        // Perform the steps:
+    // Method 3 : Optimal Solution
+    // Time : O(log(NxM)), where N = given row number, M = given column number.
+    // Reason: We are applying binary search on the imaginary 1D array of size NxM.
+    // Space : O(1) as we are not using any extra space.
+    public static boolean searchMatrix(ArrayList<ArrayList<Integer>> matrix, int target) {
+        int n = matrix.size();
+        int m = matrix.get(0).size();
+
+        //apply binary search:
+        int low = 0, high = n * m - 1;
         while (low <= high) {
             int mid = (low + high) / 2;
-            if (nums.get(mid) == target) return true;
-            else if (target > nums.get(mid)) low = mid + 1;
+            int row = mid / m, col = mid % m;
+            if (matrix.get(row).get(col) == target) return true;
+            else if (matrix.get(row).get(col) < target) low = mid + 1;
             else high = mid - 1;
         }
         return false;
     }
 
-    public static boolean searchMatrix(ArrayList<ArrayList<Integer>> matrix, int target) {
-        int n = matrix.size();
-        int m = matrix.get(0).size();
-
-        for (int i = 0; i < n; i++) {
-            if (matrix.get(i).get(0) <= target && target <= matrix.get(i).get(m - 1)) {
-                return binarySearch(matrix.get(i), target);
-            }
-        }
-        return false;
-    }
-
-    // Method 3 : Optimal Solution
-    // Time : O(log(NxM)), where N = given row number, M = given column number.
-    // Reason: We are applying binary search on the imaginary 1D array of size NxM.
-    // Space
-    // : O(1) as we are not using any extra space.
-
-    public static boolean searchMatrix(ArrayList<ArrayList<Integer>> matrix, int target) {
-        int n = matrix.size();
-        int m = matrix.get(0).size();
-
-        int low = 0;
-        int high = n * m - 1;
-        while (low <= high) {
-            int mid = (low + high)  / 2;
-            int row = mid / m;
-            int col = mid % m;
-            if (matrix.get(row).get(col) == target) return true;
-            else if (target > matrix.get(row).get(col)) low = mid + 1;
-            else high = mid -1;
-        }
-        return false;
-    }
 
     // Main Function
     public static void main(String[] args) {
