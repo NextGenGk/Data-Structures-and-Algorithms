@@ -1,4 +1,4 @@
-package BinarySearch.BS_on_Answers;
+package BinarySearch.BS_on_2D_Arrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;
