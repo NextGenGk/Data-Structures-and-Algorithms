@@ -29,7 +29,20 @@ public class Search_in_a_2D_Matrix {
     // binary search rather we are only applying it once for a particular row. That is why the
     // time complexity is O(N + logM) instead of O(N*logM).
     // Space : O(1) as we are not using any extra space.
-//    // Binary Search
+//    // Search in a 2D matrix Function
+//    public static boolean searchMatrix(ArrayList<ArrayList<Integer>> matrix, int target) {
+//        int n = matrix.size();
+//        int m = matrix.get(0).size();
+//
+//        for (int i = 0; i < n; i++) {
+//            if (matrix.get(i).get(0) <= target && target <= matrix.get(i).get(m - 1)) {
+//                return binarySearch(matrix.get(i), target);
+//            }
+//        }
+//        return false;
+//    }
+//
+//    // Simple Binary Search
 //    public static boolean binarySearch(ArrayList<Integer> nums, int target) {
 //        int n = nums.size(); //size of the array
 //        int low = 0, high = n - 1;
@@ -40,19 +53,6 @@ public class Search_in_a_2D_Matrix {
 //            if (nums.get(mid) == target) return true;
 //            else if (target > nums.get(mid)) low = mid + 1;
 //            else high = mid - 1;
-//        }
-//        return false;
-//    }
-//
-//    // Search in a 2D matrix Function
-//    public static boolean searchMatrix(ArrayList<ArrayList<Integer>> matrix, int target) {
-//        int n = matrix.size();
-//        int m = matrix.get(0).size();
-//
-//        for (int i = 0; i < n; i++) {
-//            if (matrix.get(i).get(0) <= target && target <= matrix.get(i).get(m - 1)) {
-//                return binarySearch(matrix.get(i), target);
-//            }
 //        }
 //        return false;
 //    }
