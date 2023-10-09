@@ -109,7 +109,9 @@ If we found any matching element, we will return true.
 4. Finally, after completing the traversal, if we found no matching element, we will return false.
  */
 
-// algorithm : Better Solution
+// Algorithm : Better Solution
+// (In this solution we can't perform binary search in a single row because the matrix is
+// not fully sorted so, the time complexity is very high because in this problem we have to check every element).
 /*
 Algorithm / Intuition
 We are going to use the Binary Search algorithm to optimize the approach.
