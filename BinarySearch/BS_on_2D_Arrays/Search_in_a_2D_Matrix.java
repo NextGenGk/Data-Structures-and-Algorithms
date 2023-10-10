@@ -8,7 +8,7 @@ public class Search_in_a_2D_Matrix {
     // Method 1 : Brute Force
     // Time : O(N X M), where N = given row number, M = given column number.
     // Reason: In order to traverse the matrix, we are using nested loops running for n and m times respectively.
-    // Space : Space Complexity: O(1) as we are not using any extra space.
+    // Space : O(1) as we are not using any extra space.
 //    public static boolean searchMatrix(ArrayList<ArrayList<Integer>> matrix, int target) {
 //        int n = matrix.size(), m = matrix.get(0).size();
 //
