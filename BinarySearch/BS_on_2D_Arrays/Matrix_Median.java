@@ -5,7 +5,7 @@ public class Matrix_Median {
     // Method 1 : Brute Force
     // Time : O(row*col log(row*col)) for sorting the array where r*c denotes the number of elements
     // in the linear array.
-    // Space : O(row*col)  for storing elements in the linear array
+    // Space : O(row*col) for storing elements in the linear array
     public static int findMedian(int[][] arr, int row, int col) {
         int[] median = new int[row * col];
         int index = 0;
