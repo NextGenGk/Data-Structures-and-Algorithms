@@ -6,30 +6,78 @@ public class Matrix_Median {
     // Time : O(row*col log(row*col)) for sorting the array where r*c denotes the number of elements
     // in the linear array.
     // Space : O(row*col) for storing elements in the linear array
-    public static int findMedian(int[][] arr, int row, int col) {
-        int[] median = new int[row * col];
-        int index = 0;
-        for (int i=0; i<row; i++) {
-            for (int j=0; j<col; j++) {
-                median[index] = arr[i][j];
-                index++;
+//    public static int findMedian(int[][] arr, int row, int col) {
+//        int[] median = new int[row * col];
+//        int index = 0;
+//        for (int i=0; i<row; i++) {
+//            for (int j=0; j<col; j++) {
+//                median[index] = arr[i][j];
+//                index++;
+//            }
+//        }
+//        return median[(row * col) / 2];
+//    }
+
+    // Method 2 : Optimal Solution
+    // Time : O[(log2)10^9)] for binary search
+    // O(n) * O(log2m) for count smaller value than mid function (count no. of elements smaller than tha mid)
+    // Space : O(1) because we are not using extra space
+    public static int findMedian(int[][] arr, int n, int m) {
+        int low = 1;
+        int high = 1000000000;
+        int required = (n * m)/2;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int smallestEquals = countSmallerThanMid(arr, n, m, mid);
+            if (smallestEquals <= required) low = mid + 1;
+            else high = mid - 1;
+        }
+        return low;
+    }
+
+    // Count Smaller than Mid Value Function
+    // Time : O(n) * O(log2m) (where m is the length of the array)
+    public static int countSmallerThanMid(int[][] arr, int n, int m, int x) {
+        int count = 0;
+        for (int i=0; i<n; i++) {
+            count += upperBound(arr[i], x);
+        }
+        return count;
+    }
+
+    // Upper Bound Code
+    // Time - O(log2N), Space - O(1)
+    static int upperBound(int[] arr, int target) {
+        int n = arr.length;
+
+        int low = 0;
+        int high = n-1;
+        int ans = n;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (arr[mid] > target) {
+                ans = mid;
+                high = mid - 1;
+            }
+            else {
+                low = mid+1;
             }
         }
-        return median[(row * col) / 2];
+        return ans;
     }
 
     // Main Function
     public static void main(String[] args) {
         int row = 3, col = 3;
         int[][] arr =
-                {{1, 3, 8},
-                {2, 3, 4},
-                {1, 2, 5}};
+                {{1, 4, 9},
+                {2, 5, 6},
+                {3, 8, 7}};
         System.out.println("The median of the row-wise sorted matrix is: "+
                 findMedian(arr, row, col));
     }
 }
-
 // Output :
 // The median of the row-wise sorted matrix is: 3
 
@@ -52,6 +100,32 @@ This is only true if the elements are sorted. If the elements are not sorted, th
 If you want to calculate the median of the elements in the 2D array correctly, you should sort the flattened array
 and then find the middle element. You can use built-in sorting methods like Arrays.sort() to sort the array
 before finding the median.
+ */
+
+// Algorithm : Optimal Solution
+/*
+1. The findMedian function takes a 2D integer array arr, along with its dimensions n (number of rows)
+and m (number of columns) as input.
+2. It initializes two variables: low to 1 and high to 1,000,000,000 (1 billion). These values
+represent the range in which the median will be searched.
+3. It calculates required as the target position of the median, which is (n * m) / 2. This is because
+ if you flatten the 2D array into a 1D array and sort it, the median will be at the position (n * m) / 2.
+4. The code enters a binary search loop. Inside the loop, it calculates the middle value
+mid as the average of low and high.
+5. The countSmallerThanMid function is called to count the number of elements in the matrix smaller
+than or equal to mid.
+6. If the count of elements smaller than or equal to mid (smallestEquals) is less than or equal to the
+required value, it means that the median must be greater than mid, so low is updated to mid + 1.
+7. If smallestEquals is greater than required, it means that the median must be less than or equal to mid,
+so high is updated to mid - 1.
+8. This process continues until low is no longer less than or equal to high. At this point, low will be the median value.
+Finally, the function returns the calculated low value as the median.
+
+The countSmallerThanMid function counts the number of elements smaller than x in the 2D array by iterating through
+each row and using the upperBound function to find the position in each row where the value is greater than x.
+
+The upperBound function is a standard binary search algorithm used to find the index where the element in a sorted
+array would be inserted to maintain the sorted order. It's used to count the number of elements smaller than x in a row.
  */
 
 // Striver (Video Explanation) : https://youtu.be/63fPPOdIr2c
