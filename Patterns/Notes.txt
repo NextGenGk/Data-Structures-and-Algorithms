@@ -1,0 +1,6 @@
+For making, pattern rules :
+
+1. for the outer loop, count the number of lines (row)
+2. for the inner loop, focus on the (column), & connected to somehow to the (rows)
+3. print the "*" inside the inner loop
+4. observe symmetry (optional)
