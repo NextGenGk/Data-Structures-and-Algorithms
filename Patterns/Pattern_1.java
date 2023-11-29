@@ -15,3 +15,14 @@ public class Pattern_1 {
         pattern1(4);
     }
 }
+
+/*
+
+
+ * * * *
+ * * * *
+ * * * *
+ * * * *
+
+
+ */

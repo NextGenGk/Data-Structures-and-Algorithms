@@ -15,3 +15,15 @@ public class Pattern_2 {
         pattern2(5);
     }
 }
+
+/*
+
+
+ *
+ * *
+ * * *
+ * * * *
+ * * * * *
+
+
+ */
