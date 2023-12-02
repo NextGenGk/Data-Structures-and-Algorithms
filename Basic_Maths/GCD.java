@@ -32,7 +32,7 @@ public class GCD {
         else return n1;
     }
 
-    // Formula (Euclid's Algorithm)
+    // Formula (Euclid's Algorithm) gcd(a,b) = gcd(b, a%b) where, a>0
     public static int gcd4(int n1, int n2) {
         if(n2 == 0) {
             return n1;
@@ -51,3 +51,9 @@ public class GCD {
 //        System.out.println(result);
     }
 }
+
+// Time & Space Complexity (Optimal Solution)
+/*
+Time Complexity: O(logɸmin(a,b)), where ɸ is 1.61.
+Space Complexity: O(1).
+ */
