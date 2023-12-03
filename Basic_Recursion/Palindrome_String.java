@@ -21,6 +21,19 @@ public class Palindrome_String {
     }
 }
 
+// Algorithm
+/*
+The function palindrome takes two arguments: a string str and an index i.
+The base case is when i is greater than or equal to half the length of the string (str.length()/2). When the
+recursion has reached or passed the middle of the string, it returns true, signifying that the string is
+a palindrome up to that point.
+Inside the function, it compares characters at two positions in the string:
+str.charAt(i) represents the character at index i.
+str.charAt(str.length()-i-1) represents the character at the symmetric position from the end of the string.
+If these characters don't match, the function returns false, indicating that the string is not a palindrome.
+If the characters match, it proceeds with the recursive call by incrementing i by 1 (i+1).
+ */
+
 // Time & Space Complexity -
 // Time Complexity - O(n)
 // Space Complexity - O(n)

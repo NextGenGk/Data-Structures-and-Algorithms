@@ -17,7 +17,7 @@ public class Sum_of_n_Natural_Number {
             return 0;
         }    
         return n + func(n-1);
-    }
+     }
 
 
     // Main Function
@@ -28,6 +28,15 @@ public class Sum_of_n_Natural_Number {
         System.out.println(res);
     }
 }
+
+// Algorithm (Recursive)
+/*
+1. The function takes an integer n as input.
+2. If n is equal to 0, it returns 0. This serves as the base case for the recursion because the
+sum of integers from 1 to 0 is 0.
+3. If n is greater than 0, it recursively calls itself with n-1 and adds the current value of n to the
+result of the function called with n-1.
+ */
 
 // Time & Space Complexity -
 // Time Complexity - O(n)
