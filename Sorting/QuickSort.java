@@ -3,8 +3,7 @@ package Sorting;
 public class QuickSort {
 
     // Swap Function
-    public static void swap(int[] arr, int i, int
-            j) {
+    public static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
@@ -13,11 +12,11 @@ public class QuickSort {
     // Partition Function
     public static int partition(int[] arr, int low, int high) {
         int pivot = arr[low];
-        int i = low;
+        int i = low + 1; // Start from the element next to pivot
         int j = high;
 
-        while (i < j) {
-            while (arr[i] <= pivot && i < high) {
+        while (i <= j) {
+            while (i <= j && arr[i] <= pivot) {
                 i++;
             }
             while (arr[j] > pivot) {
@@ -27,16 +26,18 @@ public class QuickSort {
                 swap(arr, i, j);
             }
         }
+        // Swap pivot with the element at position j
         swap(arr, low, j);
-        return j;
+        return j; // Return the pivot's final position
     }
 
     // QuickSort Function
     public static void quickSort(int[] arr, int low, int high) {
         if (low < high) {
-            int midElement = partition(arr, low, high);
-            quickSort(arr, low, midElement - 1);
-            quickSort(arr, midElement + 1, high);
+            int pivotIndex = partition(arr, low, high);
+            // Recursively sort elements before and after partition
+            quickSort(arr, low, pivotIndex - 1);
+            quickSort(arr, pivotIndex + 1, high);
         }
     }
 
