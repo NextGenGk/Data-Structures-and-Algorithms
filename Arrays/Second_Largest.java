@@ -70,7 +70,6 @@ public class Second_Largest {
     // Main Function
     public static void main(String[] args) {
         int[] arr = {1, 2, 4, 7, 7, 5};
-        int n = arr.length;
         int res = secondLargest(arr);
         System.out.println(res);
     }
