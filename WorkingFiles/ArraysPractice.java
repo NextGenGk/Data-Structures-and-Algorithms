@@ -604,10 +604,102 @@ public class ArraysPractice {
         }
     }
 
+    static int majority(int[] arr, int n) {
+        for (int i=0; i<n; i++) {
+            int cnt = 0;
+            for (int j=0; j<n; j++) {
+                if (arr[i] == arr[j]) cnt++;
+            }
+            if (cnt > n/2) return arr[i];
+        }
+        return -1;
+    }
+
+    static int majorityv2(int[] arr, int n) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int i=0; i<n; i++) {
+            int num = arr[i];
+
+            if (map.containsKey(num)) {
+                map.put(num, map.get(num) + 1);
+            }
+            else {
+                map.put(num, 1);
+            }
+        }
+
+        for (Map.Entry<Integer, Integer> it : map.entrySet()) {
+            if (it.getValue() > n/2) {
+                return it.getKey();
+            }
+        }
+        return -1;
+    }
+
+    static int majorityv3(int[] arr, int n) {
+        int num = arr[0];
+        int count = 1;
+
+        for (int i=1; i<n; i++) {
+            if (num == arr[i]) {
+                count++;
+            }
+            else {
+                count--;
+            }
+
+            if (count == 0) {
+                num = arr[i];
+                count++;
+            }
+        }
+
+        int count2 = 0;
+        for (int i=0; i<n; i++) {
+            if (arr[i] == num) count2++;
+            if (count2 > n/2) return arr[i];
+        }
+        return -1;
+    }
+
+    static int maxiSum(int[] arr) {
+        int n = arr.length;
+        int sum = 0;
+        int maxSum = Integer.MIN_VALUE;
+        int ansStart = -1;
+        int ansEnd = -1;
+
+        for (int i=0; i<n; i++) {
+            int start = 0;
+            if (sum == 0) start = i;
+           sum += arr[i];
+
+
+           if (sum > maxSum) {
+               maxSum = Math.max(maxSum, sum);
+               ansStart = start;
+               ansEnd = i;
+           }
+
+           if (sum < 0) {
+               sum = 0;
+           }
+        }
+        //printing the subarray:
+        System.out.print("The subarray is: [");
+        for (int i = ansStart; i <= ansEnd; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.print("]");
+        System.out.println("The maximum sum is " + maxSum);
+        return maxSum;
+    }
+
     public static void main(String[] args) {
 //        int n = 10, m = 7;
-        int[] arr = {0, 2, 1, 2, 0, 1};
-        sort012v2(arr, arr.length-1);
-        System.out.println(Arrays.toString(arr));
+        int[] arr = {-2,1,-3,4,-1,2,1,-5,4};
+        int res = maxiSum(arr);
+        System.out.println(res);
     }
 }
