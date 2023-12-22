@@ -696,10 +696,53 @@ public class ArraysPractice {
         return maxSum;
     }
 
+    static int stockBuyAndSell(int[] arr, int n) {
+        int max = 0;
+        for (int i=0; i<n; i++) {
+            for (int j=i+1; j<n; j++) {
+                if (arr[i] - arr[j] > max) {
+                    max = arr[i] - arr[j];
+                }
+            }
+        }
+        return max;
+    }
+
+    static int stockBuyAndSellv2(int[] arr, int n) {
+        int[] temp = new int[n];
+
+        temp[n-1] = arr[n-1];
+
+        for (int i=n-2; i>=0; i--) {
+            temp[i] = Math.max(arr[i], temp[i+1]);
+        }
+
+        int max=0;
+        int j=0;
+        for (int i=0; i<n; i++) {
+            if (temp[j] - arr[i] > max) {
+                max = temp[i]-arr[i];
+            }
+        }
+        return max;
+    }
+
+    static int stockBuyAndSellv3(int[] arr, int n) {
+        int maxProfit = 0;
+        int minSoFar = arr[0];
+
+        for (int i=0; i<n; i++) {
+            minSoFar = Math.min(arr[i], minSoFar);
+            int profit = arr[i] - minSoFar;
+            maxProfit = Math.max(maxProfit, profit);
+        }
+        return maxProfit;
+    }
+
     public static void main(String[] args) {
 //        int n = 10, m = 7;
-        int[] arr = {-2,1,-3,4,-1,2,1,-5,4};
-        int res = maxiSum(arr);
+        int[] arr = {7,1,5,3,6,4};
+        int res = stockBuyAndSellv3(arr, arr.length);
         System.out.println(res);
     }
 }
