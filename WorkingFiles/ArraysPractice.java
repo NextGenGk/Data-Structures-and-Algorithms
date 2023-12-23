@@ -1,5 +1,6 @@
 package WorkingFiles;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class ArraysPractice {
@@ -739,10 +740,86 @@ public class ArraysPractice {
         return maxProfit;
     }
 
+    static int[] rearrange(int[] arr, int n) {
+        ArrayList<Integer> pos = new ArrayList<>();
+        ArrayList<Integer> neg = new ArrayList<>();
+
+        for (int i=0; i<n; i++) {
+            if (arr[i] > 0) {
+                pos.add(arr[i]);
+            }
+            else {
+                neg.add(arr[i]);
+            }
+        }
+
+        for (int i=0; i<n/2; i++) {
+            arr[2*i] = pos.get(i);
+            arr[2*i+1] = neg.get(i);
+        }
+        return arr;
+    }
+
+    static int[] rearrangev2(int[] arr, int n) {
+        int pos = 0;
+        int neg = 1;
+        int[] temp = new int[n];
+
+        for (int i=0; i<n; i++) {
+            if (arr[i] > 0) {
+                temp[pos] = arr[i];
+                pos+=2;
+            }
+            else {
+                temp[neg] = arr[i];
+                neg+=2;
+            }
+        }
+        return temp;
+    }
+
+    static int[] rearrangev3(int[] arr, int n) {
+        ArrayList<Integer> pos = new ArrayList<>();
+        ArrayList<Integer> neg = new ArrayList<>();
+
+        for (int i=0; i<n; i++) {
+            if (arr[i] > 0) {
+                pos.add(arr[i]);
+            }
+            else {
+                neg.add(arr[i]);
+            }
+        }
+
+        if (pos.size() > neg.size()) {
+            for (int i=0; i<neg.size(); i++) {
+                arr[2*i] = pos.get(i);
+                arr[2*i+1] = neg.get(i);
+            }
+            int index = neg.size() * 2;
+            for (int i=neg.size(); i<pos.size(); i++) {
+                arr[index] = pos.get(i);
+                index++;
+            }
+        }
+        else {
+            for (int i=0; i<pos.size(); i++) {
+                arr[2*i] = pos.get(i);
+                arr[2*i+1] = neg.get(i);
+            }
+            int index = pos.size() * 2;
+            for (int i=pos.size(); i<neg.size(); i++) {
+                arr[index] = neg.get(i);
+                index++;
+            }
+        }
+        return arr;
+    }
+
     public static void main(String[] args) {
 //        int n = 10, m = 7;
-        int[] arr = {7,1,5,3,6,4};
-        int res = stockBuyAndSellv3(arr, arr.length);
-        System.out.println(res);
+        int[] arr = {1,2,-3,-1,-2,-3};
+        int[] res = rearrangev3(arr, arr.length);
+        System.out.println(Arrays.toString(res));
     }
 }
