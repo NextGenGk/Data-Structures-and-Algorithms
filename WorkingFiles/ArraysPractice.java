@@ -873,11 +873,78 @@ public class ArraysPractice {
         return ans;
     }
 
-    public static void main(String[] args) {
-        int[] arr = {2, 1, 5, 4, 3, 0, 0};
-        int n = arr.length;
+    static int lcs(int[] arr, int n) {
+        int longest = 1;
 
-        ArrayList<Integer> as = leadersv2(arr, arr.length);
-        System.out.println(as);
+        for (int i=0; i<n; i++) {
+            int curr = arr[i];
+            int count = 1;
+            while (contains(arr, curr+1)) {
+                curr++;
+                count++;
+            }
+            longest = Math.max(longest, count);
+        }
+        return longest;
+    }
+
+    static boolean contains(int[] arr, int target) {
+        for (int i=0; i<arr.length; i++) {
+            if (arr[i] == target) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    static int lcsv2(int[] arr, int n) {
+        int cntCurr = 0;
+        int longest = 1;
+        int lastSmaller = Integer.MIN_VALUE;
+
+        Arrays.sort(arr);
+        for (int i=0; i<n; i++) {
+            if (arr[i] - 1 == lastSmaller) {
+                cntCurr++;
+                lastSmaller = arr[i];
+            }
+            else if (arr[i] - 1 != lastSmaller) {
+                cntCurr = 1;
+                lastSmaller = arr[i];
+            }
+            longest = Math.max(cntCurr, longest);
+        }
+        return longest;
+    }
+
+    static int lcsv3(int[] arr, int n) {
+        int longest = 0;
+
+        HashSet<Integer> set = new HashSet<>();
+
+        for (int in : arr) {
+            set.add(in);
+        }
+
+        for (int i=0; i<set.size(); i++) {
+            if (!set.contains(arr[i]-1)) {
+                int curr = arr[i];
+                int count = 1;
+
+                while (set.contains(curr+1)) {
+                    curr++;
+                    count++;
+                }
+                longest = Math.max(longest, count);
+            }
+        }
+        return longest;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {100, 200, 1, 3, 2, 4};
+        int n = arr.length;
+        int ans = lcsv3(arr, n);
+        System.out.println(ans);
     }
 }
