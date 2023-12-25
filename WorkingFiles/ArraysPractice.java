@@ -841,13 +841,43 @@ public class ArraysPractice {
         reverse(arr, idx+1, n-1);
     }
 
+    static ArrayList<Integer> leaders(int[] arr, int n) {
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        for (int i=0; i<n; i++) {
+            boolean leaders = true;
+            for (int j=i+1; j<n; j++) {
+                if (arr[j]>arr[i]) {
+                    leaders = false;
+                    break;
+                }
+            }
+            if (leaders) {
+                ans.add(arr[i]);
+            }
+
+        }
+        return ans;
+    }
+
+    static ArrayList<Integer> leadersv2(int[] arr, int n) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        int maxi = Integer.MIN_VALUE;
+
+        for (int i=n-1; i>=0; i--) {
+            if (arr[i] > maxi) {
+                ans.add(arr[i]);
+            }
+            maxi = Math.max(arr[i], maxi);
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         int[] arr = {2, 1, 5, 4, 3, 0, 0};
         int n = arr.length;
 
-        nextPermutation(arr);
-
-        for (int i = 0; i < n; i++)
-            System.out.print(arr[i] + " ");
+        ArrayList<Integer> as = leadersv2(arr, arr.length);
+        System.out.println(as);
     }
 }
