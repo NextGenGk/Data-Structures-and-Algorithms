@@ -1086,11 +1086,36 @@ public class ArraysPractice {
         return ans;
     }
 
+    static int subarrayCounts(int[] arr,int n, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        int prefixSum = 0;
+        int count = 0;
+        int sum = 0;
+
+        map.put(0, 1);
+
+        for (int i=0; i<n; i++) {
+            prefixSum += arr[i];
+
+            if (map.containsKey(prefixSum-k)) {
+                count += map.get(prefixSum-k);
+            }
+
+//            map.put(prefixSum, map.getOrDefault(prefixSum, 0) + 1);
+            map.compute(prefixSum, (key, value) -> (value == null) ? 1 : value + 1);
+
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
-        int[][] matrix = {{1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}};
-        List<Integer> ans = spiralOrder(matrix);
-        System.out.println(ans);
+        int[] arr = {1, 2, 3, -3, 1, 1, 1, 4, 2, -3}; // {3, -3, 1, 1, 1} -> (0, 1)
+        int n = arr.length;
+
+        int K = 3;
+
+        int result = subarrayCounts(arr, n, K);
+        System.out.println(result);
     }
 }
