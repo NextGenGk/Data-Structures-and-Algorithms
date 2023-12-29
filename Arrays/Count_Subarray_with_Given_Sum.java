@@ -57,6 +57,15 @@ public class Count_Subarray_with_Given_Sum {
                 count += map.get(preSum-k);
             }
 
+            // This line essentially counts occurrences of preSum values by updating their frequencies in the map.
+            // If preSum already exists in the map, it increments the count by 1. If not, it initializes the count to 1.
+
+            // map.put(key, value) is a method used to insert a key-value pair into a map.
+            // preSum seems to be the key.
+            // map.getOrDefault(preSum, 0) retrieves the current value associated with the key preSum if it exists in
+            // the map. If the key doesn't exist, it returns the default value 0.
+            // map.getOrDefault(preSum, 0) + 1 increments the value associated with the key preSum by 1.
+            // map.put(preSum, map.getOrDefault(preSum, 0) + 1) inserts the updated key-value pair into the map.
             map.put(preSum, map.getOrDefault(preSum, 0) + 1);
         }
         return count;
