@@ -34,32 +34,34 @@ public class Variation3 {
 
     // Method 2 : Optimal Solution
     // Time - O(N*N), Space - O(1)
-    static List<Integer> generateRow(int n) {
-        long res = 1;
-        List<Integer> ans = new ArrayList<>();
-        ans.add((int) res);
+    public static List<Integer> generateRow(int row) {
+        long ans = 1;
+        List<Integer> ansRow = new ArrayList<>();
+        ansRow.add(1); //inserting the 1st element
 
-        for (int i=1; i<n; i++) {
-            res = res * (n - i);
-            res = res / i;
-            ans.add((int) res);
+        //calculate the rest of the elements:
+        for (int col = 1; col < row; col++) {
+            ans = ans * (row - col);
+            ans = ans / col;
+            ansRow.add((int)ans);
         }
-        return ans;
+        return ansRow;
     }
 
-    // Pascal Triangle Optimal Function
-    static List<List<Integer>> pascalTriangleOptimal(int n) {
-        List<List<Integer>> res = new ArrayList<>();
-        for (int row=1; row<=n; row++) {
-            res.add(generateRow(n));
+    public static List<List<Integer>> pascalTriangleOptimal(int n) {
+        List<List<Integer>> ans = new ArrayList<>();
+
+        //store the entire pascal's triangle:
+        for (int row = 1; row <= n; row++) {
+            ans.add(generateRow(row));
         }
-        return res;
+        return ans;
     }
 
     // Main Function
     public static void main(String[] args) {
         int n = 5;
-        List<List<Integer>> ans = pascalTriangle(n);
+        List<List<Integer>> ans = pascalTriangleOptimal(n);
         System.out.println(ans);
     }
 }
