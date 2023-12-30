@@ -1,6 +1,5 @@
 package WorkingFiles;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class ArraysPractice {
@@ -1109,13 +1108,71 @@ public class ArraysPractice {
         return count;
     }
 
+    static int nCr(int n, int r) {
+        long ans = 1;
+        for (int i=0; i<r; i++) {
+            ans = ans * (n-i);
+            ans = ans / (i+1);
+        }
+        return (int) ans;
+    }
+
+    static int pascalTriangle(int row, int col) {
+        int element = (int) nCr(row-1, col-1);
+        return element;
+    }
+
+    static long pascalVersion2(int n) {
+        long ans = 1;
+        for (int i=1; i<=n; i++) {
+            ans = ans * (n - i);
+            ans = ans / i;
+        }
+        return ans;
+    }
+
+//    static List<List<Integer>> pascalTriangle(int n) {
+//        List<List<Integer>> ans = new ArrayList<>();
+//
+//        // Store the entire Pascal's triangle:
+//        for (int row = 1; row <= n; row++) {
+//            List<Integer> tempLst = new ArrayList<>(); // temporary list
+//            for (int col = 1; col <= row; col++) {
+//                tempLst.add(nCr(row - 1, col - 1));
+//            }
+//            ans.add(tempLst);
+//        }
+//        return ans;
+//    }
+
+    public static List<Integer> generateRow(int row) {
+        long ans = 1;
+        List<Integer> ansRow = new ArrayList<>();
+        ansRow.add(1); //inserting the 1st element
+
+        //calculate the rest of the elements:
+        for (int col = 1; col < row; col++) {
+            ans = ans * (row - col);
+            ans = ans / col;
+            ansRow.add((int)ans);
+        }
+        return ansRow;
+    }
+
+    public static List<List<Integer>> pascalTriangleOptimal(int n) {
+        List<List<Integer>> ans = new ArrayList<>();
+
+        //store the entire pascal's triangle:
+        for (int row = 1; row <= n; row++) {
+            ans.add(generateRow(row));
+        }
+        return ans;
+    }
+
+    // Main Function
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, -3, 1, 1, 1, 4, 2, -3}; // {3, -3, 1, 1, 1} -> (0, 1)
-        int n = arr.length;
-
-        int K = 3;
-
-        int result = subarrayCounts(arr, n, K);
-        System.out.println(result);
+        int n = 5;
+        List<List<Integer>> ans = pascalTriangleOptimal(n);
+        System.out.println(ans);
     }
 }
