@@ -25,15 +25,24 @@ public class Variation2 {
 
     // Method 2 - Optimal Solution
     // Time - O(N), Space - O(1)
-    static void pascalTriangleOptimal(int n) {
-        long ans = 1;
-        System.out.print(ans + " ");
+    public static long nCrv2(int n, int r) {
+        long res = 1;
 
-        for (int i=1; i<n; i++) { // print the row
-            ans = ans * (n - i);
-            ans = ans / (i);
-            System.out.print(ans + " ");
+        // calculating nCr:
+        for (int i = 0; i < r; i++) {
+            res = res * (n - i);
+            res = res / (i + 1);
         }
+        return res;
+    }
+
+    // Print column
+    public static void pascalTrianglev2(int n) {
+        // printing the entire row n:
+        for (int c = 1; c <= n; c++) {
+            System.out.print(nCr(n - 1, c - 1) + " ");
+        }
+        System.out.println();
     }
 
     // Main Function
@@ -41,7 +50,7 @@ public class Variation2 {
         // Variation 2:
         int n = 5; // row number
         // pascalTriangle(n);
-        pascalTriangleOptimal(n);
+        pascalTrianglev2(n);
     }
 }
 
