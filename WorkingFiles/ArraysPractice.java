@@ -1169,10 +1169,87 @@ public class ArraysPractice {
         return ans;
     }
 
-    // Main Function
+    static int majoritynby3(int[] arr) {
+        int n = arr.length;
+
+        for (int i=0; i<n; i++) {
+            int count = 0;
+            for (int j=0; j<n; j++) {
+                if (arr[i] == arr[j]) {
+                    count++;
+                }
+            }
+            if (count > n/3) return arr[i];
+        }
+        return -1;
+    }
+
+    static ArrayList<Integer> majoritynby3v1(int[] arr) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        int n = arr.length;
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int i=0; i<n; i++) {
+            int num = arr[i];
+
+            if (map.containsKey(num)) {
+                map.compute(num, (key, value) -> (value == null) ? 1 : value + 1);
+            }
+            else {
+                map.put(arr[i], 1);
+            }
+        }
+
+        for (Integer entry: map.keySet()) {
+            if (map.get(entry) > n/3) {
+                ans.add(entry);
+            }
+        }
+        return ans;
+    }
+
+    static List<Integer> majoritynby3v2(int[] arr, int n) {
+        int count1 = 0;
+        int count2 = 0;
+        int el1 = Integer.MIN_VALUE;
+        int el2 = Integer.MIN_VALUE;
+
+        for (int i=0; i<n; i++) {
+            if (count1 == 0 && arr[i] != el2) {
+                count1++;
+                el1 = arr[i];
+            }
+            else if (count2 == 0 && arr[i] != el1) {
+                count2++;
+                el2 = arr[i];
+            }
+            else if (el1 == arr[i]) count1++;
+            else if (el2 == arr[i]) count2++;
+            else {
+                count1--;
+                count2--;
+            }
+        }
+
+        int cnt1 = 0;
+        int cnt2 = 0;
+        List<Integer> ans = new ArrayList<>();
+        for (int i=0; i<n; i++) {
+            if (el1 == arr[i]) cnt1++;
+            if (el2 == arr[i]) cnt2++;
+        }
+
+        if (cnt1 > n/3) ans.add(el1);
+        if (cnt2 > n/3) ans.add(el2);
+
+        return ans;
+    }
+
     public static void main(String[] args) {
-        int n = 5;
-        List<List<Integer>> ans = pascalTriangleOptimal(n);
-        System.out.println(ans);
+        int[] arr = {1,1,1,1,3,2,2,2};
+        int n = arr.length;
+
+        System.out.println(majoritynby3v2(arr, arr.length));
     }
 }
