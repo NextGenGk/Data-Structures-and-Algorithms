@@ -7,21 +7,19 @@ public class Three_Sum {
     // Method 1 - Brute Force
     // Time Complexity: O(N^3), Space Complexity: O(N)
 //    static List<List<Integer>> threeSum(int[] arr) {
-//        List<Integer> tempList = new ArrayList<>();
+//        int n = arr.length;
 //        Set<List<Integer>> set = new HashSet<>();
 //
-//        int n = arr.length;
-//
-//        for (int i=0; i<n-2; i++) {
-//            for (int j=i+1; j<n-1; j++) {
-//                for (int k=j+1; k<n; k++) {
+//        for (int i = 0; i < n; i++) {
+//            for (int j = i + 1; j < n; j++) {
+//                for (int k = j + 1; k < n; k++) {
 //                    if (arr[i] + arr[j] + arr[k] == 0) {
-//                        tempList.add(arr[i]);
-//                        tempList.add(arr[j]);
-//                        tempList.add(arr[k]);
-//                        Collections.sort(tempList);
-//                        set.add(tempList);
-//                        tempList = new ArrayList<>();
+//                        List<Integer> temp = new ArrayList<>();
+//                        temp.add(arr[i]);
+//                        temp.add(arr[j]);
+//                        temp.add(arr[k]);
+//                        Collections.sort(temp);
+//                        set.add(temp);
 //                    }
 //                }
 //            }
