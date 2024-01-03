@@ -83,6 +83,8 @@ public class Four_Sum {
         for (int i = 0; i < n; i++) {
             if (i > 0 && nums[i] == nums[i - 1]) continue;
             for (int j = i + 1; j < n; j++) {
+                // there's a condition (if (j > i + 1 && nums[j] == nums[j - 1]) continue;)
+                // that skips duplicate values for the second element.
                 if (j > i + 1 && nums[j] == nums[j - 1]) continue;
                 int k = j + 1;
                 int l = n - 1;
