@@ -1,5 +1,6 @@
 package WorkingFiles;
 
+import javax.swing.*;
 import java.util.*;
 
 public class ArraysPractice {
@@ -1301,9 +1302,93 @@ public class ArraysPractice {
         return ans;
     }
 
-    // Main Function
+    public static List<List<Integer>> fourSum1(int[] nums, int target) {
+        int n = nums.length;
+        Set<List<Integer>> set = new HashSet<>();
+        for (int i=0; i<n; i++) {
+            for (int j=i+1; j<n; j++) {
+                for (int k=j+1; k<n; k++) {
+                    for (int l=k+1; l<n; l++) {
+                        long sum = nums[i] + nums[j] + nums[k] + nums[l];
+
+                        if (sum == target) {
+                            List<Integer> temp = Arrays.asList(nums[i], nums[j], nums[k], nums[l]);
+                            Collections.sort(temp);
+                            set.add(temp);
+                        }
+                    }
+                }
+            }
+        }
+        List<List<Integer>> ans = new ArrayList<>(set);
+        return ans;
+    }
+
+    public static List<List<Integer>> fourSum2(int[] nums, int target) {
+        int n = nums.length;
+        Set<List<Integer>> set = new HashSet<>();
+
+        for (int i=0; i<n; i++) {
+            for (int j=i+1; j<n; j++) {
+                Set<Integer> hashset = new HashSet<>();
+                for (int k=j+1; k<n; k++) {
+                    int fourth = target - (nums[i] + nums[j] + nums[k]);
+                    if (hashset.contains(fourth)) {
+                        List<Integer> temp = Arrays.asList(nums[i], nums[j], nums[k], fourth);
+                        Collections.sort(temp);
+                        set.add(temp);
+                    }
+                    hashset.add(nums[k]);
+                }
+            }
+        }
+        List<List<Integer>> ans = new ArrayList<>(set);
+        return ans;
+    }
+
+    public static List<List<Integer>> fourSum3(int[] nums, int target) {
+        List<List<Integer>> ans = new ArrayList<>();
+        int n = nums.length;
+
+        Arrays.sort(nums);
+        for (int i = 0; i < n; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+            for (int j = i + 1; j < n; j++) {
+                if (j > i + 1 && nums[j] == nums[j - 1]) continue;
+                int k = j + 1;
+                int l = n - 1;
+                while (k < l) {
+                    int sum = nums[i] + nums[j] + nums[k] + nums[l];
+
+                    if (sum < target) {
+                        k++;
+                    }
+                    else if (sum > target) {
+                        l--;
+                    }
+                    else {
+                        List<Integer> temp = new ArrayList<>();
+                        temp.add(nums[i]);
+                        temp.add(nums[j]);
+                        temp.add(nums[k]);
+                        temp.add(nums[l]);
+                        ans.add(temp);
+                        k++;
+                        l--;
+                        while (k < l && nums[k] == nums[k - 1]) k++;
+                        while (k < l && nums[l] == nums[l + 1]) l--;
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
-        int[] arr = {-1, 0, 1, 2, -1, -4}; // Output: [[-1,-1,2],[-1,0,1]]
-        System.out.println(threeSumv2(arr));
+        int[] arr = {4,3,3,4,4,2,1,2,1,1};
+        int target = 9;
+        // int[] arr = {1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5};
+        // int target = 8;
+        System.out.println(fourSum3(arr, target));
     }
 }
