@@ -62,7 +62,7 @@ public class Longest_Subarray_with_Zero_Sum {
                 maxi = i+1;
             }
             else {
-                if (map.get(prefixSum) != null) {
+                if (map.containsKey(prefixSum)) {
                     maxi = Math.max(maxi, i - map.get(prefixSum));
                 }
                 else {
@@ -76,6 +76,7 @@ public class Longest_Subarray_with_Zero_Sum {
     // Main Function
     public static void main(String[] args) {
         int[] arr = {6, -2, 2, -8, 1, 7, 4, -10};
+//        int[] arr = {1, -1, 3, 2, -2, -8, 1, 7, 10, 23}; // for edge case
         int[] arr2 = {1, 0, -5};
         System.out.println(longestSubarray1(arr2));
     }
