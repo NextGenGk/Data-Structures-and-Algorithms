@@ -1384,11 +1384,52 @@ public class ArraysPractice {
         return ans;
     }
 
+    static int longest(int[] arr) {
+        int n = arr.length;
+
+        int maxLen = 1;
+        for (int i=0; i<n; i++) {
+            int sum = 0;
+            for (int j=i; j<n; j++) {
+                sum += arr[j];
+                if (sum == 0) {
+                    maxLen = Math.max(maxLen, j-i+1);
+                }
+            }
+        }
+        return maxLen;
+    }
+
+    static int longest2(int[] arr) {
+        int maxlen = 0;
+        int n = arr.length;
+        int prefixSum = 0;
+        int sum = 0;
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int i=0; i<n; i++) {
+            prefixSum += arr[i];
+            if (sum == 0) {
+                maxlen = i+1;
+            }
+            else {
+                if (map.containsKey(prefixSum)) {
+                    maxlen = Math.max(maxlen, i - map.get(prefixSum));
+                }
+                else {
+                    map.put(prefixSum, i);
+                }
+            }
+        }
+        return maxlen;
+    }
+
     public static void main(String[] args) {
-        int[] arr = {4,3,3,4,4,2,1,2,1,1};
+        int[] arr = {6, -2, 2, -8, 1, 7, 4, -10};
         int target = 9;
         // int[] arr = {1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5};
         // int target = 8;
-        System.out.println(fourSum3(arr, target));
+        System.out.println(longest2(arr));
     }
 }
