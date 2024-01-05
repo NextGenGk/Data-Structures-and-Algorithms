@@ -1425,11 +1425,53 @@ public class ArraysPractice {
         return maxlen;
     }
 
+    static int countXor(int[] arr, int k) {
+        int n = arr.length;
+        int count = 0;
+
+        for (int i=0; i<n; i++) {
+            int xor = arr[i];
+            if (xor == k) count++;
+            for (int j=i+1; j<n; j++) {
+                xor = xor ^ arr[j];
+                if (xor == k) count++;
+            }
+        }
+        return count;
+    }
+
+    static int countXorv2(int[] arr, int k) {
+        int n = arr.length;
+        int count = 0;
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int xr = 0;
+        map.put(xr, 1);
+
+        for (int i=0; i<n; i++) {
+            xr = xr ^ arr[i];
+
+            int x = xr ^ k;
+
+            if (map.containsKey(x)) {
+                count = count + map.get(x);
+            }
+
+            if (map.containsKey(xr)) {
+                map.put(xr, map.get(xr) + 1);
+            }
+            else {
+                map.put(xr, 1);
+            }
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
-        int[] arr = {6, -2, 2, -8, 1, 7, 4, -10};
-        int target = 9;
+        int[] arr = {5, 6, 7, 8, 9};
+        int target = 5;
         // int[] arr = {1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5};
         // int target = 8;
-        System.out.println(longest2(arr));
+        System.out.println(countXorv2(arr, target));
     }
 }
