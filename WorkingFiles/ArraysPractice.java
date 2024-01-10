@@ -1,6 +1,5 @@
 package WorkingFiles;
 
-import javax.swing.*;
 import java.util.*;
 
 public class ArraysPractice {
@@ -1467,11 +1466,67 @@ public class ArraysPractice {
         return count;
     }
 
+    static List<List<Integer>> mergeIntervals1(int[][] arr) {
+        int n = arr.length;
+        // sort the array by start time
+        Arrays.sort(arr, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o1[0] - o2[0];
+            }
+        });
+
+        List<List<Integer>> ans = new ArrayList<>();
+
+        for (int i=0; i<n; i++) {
+            int start = arr[i][0];
+            int end = arr[i][1];
+
+            if (!ans.isEmpty() && end <= ans.get(ans.size()-1).get(1)) {
+                continue;
+            }
+
+            for (int j=i+1; j<n; j++) {
+                if (arr[j][0] <= end) {
+                    end = Math.max(end, arr[j][1]);
+                }
+                else {
+                    break;
+                }
+            }
+            ans.add(Arrays.asList(start, end));
+        }
+        return ans;
+    }
+
+    static List<List<Integer>> mergeIntervals2(int[][] arr) {
+        int n = arr.length;
+
+        // sort the array by start time
+        Arrays.sort(arr, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o1[0] - o2[0];
+            }
+        });
+
+        List<List<Integer>> ans = new ArrayList<>();
+
+        for (int i=0; i<n; i++) {
+            if (ans.isEmpty() || arr[i][1] >= ans.get(ans.size() - 1).get(1)) {
+                ans.add(Arrays.asList(arr[i][0], arr[i][1]));
+            }
+            else {
+                ans.get(ans.size()-1).set(1,Math.max(ans.get(ans.size()-1).get(1), arr[i][1]));
+            }
+        }
+        return ans;
+    }
+
+    // Main Function
     public static void main(String[] args) {
-        int[] arr = {5, 6, 7, 8, 9};
-        int target = 5;
-        // int[] arr = {1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5};
-        // int target = 8;
-        System.out.println(countXorv2(arr, target));
+        int[][] arr = {{1,3}, {2,6}, {8,10}, {15,18}};
+        List<List<Integer>> ans = mergeIntervals2(arr);
+        System.out.println(ans);
     }
 }
