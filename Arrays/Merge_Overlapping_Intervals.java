@@ -36,9 +36,10 @@ public class Merge_Overlapping_Intervals {
 
             // if next interval overlaps with current interval, then update end time
             for (int j=i+1; j<n; j++) {
+                // means overlap
                 if (arr[j][0] <= end) {
                     end = Math.max(end, arr[j][1]);
-                } else {
+                } else { // means no overlap
                     break;
                 }
             }
