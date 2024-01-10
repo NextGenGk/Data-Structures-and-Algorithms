@@ -65,9 +65,13 @@ public class Merge_Overlapping_Intervals {
         List<List<Integer>> ans = new ArrayList<>();
 
         for (int i=0; i<n; i++) {
+            // this case means there is no overlapping between the intervals
+            // means, a new interval is added or new interval is formed (so we can added a new interval)
             if (ans.isEmpty() || arr[i][0] > ans.get(ans.size()-1).get(1)) {
                 ans.add(Arrays.asList(arr[i][0], arr[i][1]));
             }
+            // this case means overlapping
+            // so, we can simply check the last element of previous element, or (start, end) of current interval
             else {
                 ans.get(ans.size()-1).set(1, Math.max(ans.get(ans.size()-1).get(1), arr[i][1]));
             }
