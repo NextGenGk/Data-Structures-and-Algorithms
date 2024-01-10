@@ -1513,7 +1513,7 @@ public class ArraysPractice {
         List<List<Integer>> ans = new ArrayList<>();
 
         for (int i=0; i<n; i++) {
-            if (ans.isEmpty() || arr[i][1] >= ans.get(ans.size() - 1).get(1)) {
+            if (ans.isEmpty() || arr[i][0] >= ans.get(ans.size() - 1).get(1)) {
                 ans.add(Arrays.asList(arr[i][0], arr[i][1]));
             }
             else {
