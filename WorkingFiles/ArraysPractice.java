@@ -1581,20 +1581,73 @@ public class ArraysPractice {
         }
     }
 
+    static int[] findMissingRepeatingNumbers(int[] arr) {
+        Arrays.sort(arr);
+        int n = arr.length-1;
+        int rep = -1;
+        int miss = -1;
+
+        for (int i=1; i<=n; i++) {
+            if (arr[i] != i) {
+                miss = i;
+            }
+            for (int j=i+1; j<=n; j++) {
+                if (arr[i] == arr[j]) {
+                    rep = arr[i];
+                }
+            }
+        }
+        return new int[]{rep, miss};
+    }
+
+    static int[] findMissingRepeatingNumbers2(int[] arr) {
+        int n = arr.length;
+        int[] hash = new int[n+1];
+
+        for (int i=0; i<n; i++) {
+            hash[arr[i]]++;
+        }
+
+        int rep = -1;
+        int miss = -1;
+        for (int i=1; i<=n; i++) {
+            if (hash[i] == 2) rep = i;
+            else if (hash[i] == 0) miss = i;
+
+            if (rep != -1 && miss != -1) {
+                break;
+            }
+        }
+        return new int[]{rep, miss};
+    }
+
+    static int[] findMissingRepeatingNumbers3(int[] arr) {
+        int n = arr.length;
+
+        int Sn = (n * (n+1))/2;
+        int S2n = (n * (n+1) * (2*n+1))/6;
+
+        int S1 = 0;
+        int S2 = 0;
+        for (int i=0; i<n; i++) {
+            S1 += arr[i];
+            S2 += (long) arr[i] * arr[i];
+        }
+
+        int  val1 = S1 - Sn;
+        int val2 = S2 - S2n;
+
+        val2 = val2 / val1;
+
+        int x = (val1 + val2) / 2;
+        int y = x - (val1);
+        return new int[]{x, y};
+    }
+
     public static void main(String[] args) {
-        long[] arr1 = {1, 4, 8, 10};
-        long[] arr2 = {2, 3, 9};
-        int n = 4, m = 3;
-        merge2(arr1, arr2, n, m);
-        System.out.println("The merged arrays are:");
-        System.out.print("arr1[] = ");
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr1[i] + " ");
-        }
-        System.out.print("\narr2[] = ");
-        for (int i = 0; i < m; i++) {
-            System.out.print(arr2[i] + " ");
-        }
-        System.out.println();
+        int[] a = {3,1,2,5,3};
+        int[] ans = findMissingRepeatingNumbers3(a);
+        System.out.println("The repeating and missing numbers are: {"
+                + ans[0] + ", " + ans[1] + "}");
     }
 }
