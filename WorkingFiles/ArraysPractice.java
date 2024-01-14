@@ -1714,8 +1714,100 @@ public class ArraysPractice {
         return mergeSort(a, 0, n - 1);
     }
 
+    public static int countPairs(int[] arr, int n) {
+        int count = 0;
+
+        for (int i=0; i<n; i++) {
+            for (int j=i+1; j<n; j++) {
+                if (arr[i] > 2 * arr[j]) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    private static void conquer(int[] arr, int low, int mid, int high) {
+        ArrayList<Integer> temp = new ArrayList<>(); // temporary array
+        int left = low;      // starting index of left half of arr
+        int right = mid + 1;   // starting index of right half of arr
+
+        //storing elements in the temporary array in a sorted manner//
+        while (left <= mid && right <= high) {
+            if (arr[left] <= arr[right]) {
+                temp.add(arr[left]);
+                left++;
+            } else {
+                temp.add(arr[right]);
+                right++;
+            }
+        }
+
+        // if elements on the left half are still left //
+
+        while (left <= mid) {
+            temp.add(arr[left]);
+            left++;
+        }
+
+        //  if elements on the right half are still left //
+        while (right <= high) {
+            temp.add(arr[right]);
+            right++;
+        }
+
+        // transfering all elements from temporary to arr //
+        for (int i = low; i <= high; i++) {
+            arr[i] = temp.get(i - low);
+        }
+    }
+
+    static int divide(int[] arr, int start, int end) {
+        int count = 0;
+        if (start >= end) {
+            return count;
+        }
+        int mid = start + (end - start) / 2;
+        count += divide(arr, start, mid);
+        count += divide(arr, mid+1, end);
+        count += countOfPairs(arr, start, mid, end);
+        conquer(arr, start, mid, end);
+        return count;
+    }
+
+//    static int countOfPairs(int[] arr, int low, int mid, int high) {
+//        int count = 0;
+//        int right = mid+1;
+//
+//        for (int i=low; i<mid; i++) {
+//            while (right <= high && arr[i] > 2 * arr[right]) {
+//                right++;
+//                count += (right - (mid + 1));
+//            }
+//        }
+//        return count;
+//    }
+
+    static int countOfPairs(int[] arr, int low, int mid, int high) {
+        int right = mid+1;
+        int count = 0;
+        for (int i=low; i<=mid; i++) {
+            while (right <= high && arr[i] > 2 * arr[right]) {
+                right++;
+                count += (right - (mid + 1));
+            }
+        }
+        return count;
+    }
+
+    static int inversions(int[] arr, int n) {
+        return divide(arr, 0, n-1);
+    }
+
     public static void main(String[] args) {
-        int[] arr = {5, 4, 3, 2, 1};
-        System.out.println(countInversions(arr, arr.length));
+        int[] arr = {1,3,2,3,1};
+        int n = 5;
+        int cnt = inversions(arr, arr.length);
+        System.out.println("The number of reverse pair is: " + cnt);
     }
 }
