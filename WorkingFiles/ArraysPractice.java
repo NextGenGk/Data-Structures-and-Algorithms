@@ -1855,6 +1855,6 @@ public class ArraysPractice {
     public static void main(String[] args) {
         int[] arr = {1,2,-3,0,-4,-5};
         int cnt = maxProduct3(arr);
-        System.out.println("The number of reverse pair is: " + cnt);
+        System.out.println(cnt);
     }
 }
