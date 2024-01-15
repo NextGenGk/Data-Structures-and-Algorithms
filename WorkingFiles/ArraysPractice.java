@@ -1804,10 +1804,57 @@ public class ArraysPractice {
         return divide(arr, 0, n-1);
     }
 
+    static int maxProduct(int[] arr) {
+        int n = arr.length;
+        int max= Integer.MIN_VALUE;
+
+        for (int i=0; i<n; i++) {
+            for (int j=i+1; j<n; j++) {
+                int product = 1;
+                for (int k=i; k<=j; k++) {
+                    product *= arr[k];
+                }
+                max = Math.max(product, max);
+            }
+        }
+        return max;
+    }
+
+    static int maxProduct2(int[] arr) {
+        int n = arr.length;
+        int max= Integer.MIN_VALUE;
+
+        for (int i=0; i<n; i++) {
+            int product = 1;
+            for (int j=i; j<n; j++) {
+                product *= arr[j];
+            }
+            max = Math.max(max, product);
+        }
+        return max;
+    }
+
+    static int maxProduct3(int[] arr) {
+        int n = arr.length;
+        int max = Integer.MIN_VALUE;
+        int prefix = 1;
+        int suffix = 1;
+
+        for (int i=0; i<n; i++) {
+            prefix *= arr[i];
+            suffix *= arr[n-i-1];
+
+            if (prefix == 0) prefix = 1;
+            if (suffix == 0) suffix = 1;
+
+            max = Math.max((Math.max(prefix, suffix)), max);
+        }
+        return max;
+    }
+
     public static void main(String[] args) {
-        int[] arr = {1,3,2,3,1};
-        int n = 5;
-        int cnt = inversions(arr, arr.length);
+        int[] arr = {1,2,-3,0,-4,-5};
+        int cnt = maxProduct3(arr);
         System.out.println("The number of reverse pair is: " + cnt);
     }
 }
