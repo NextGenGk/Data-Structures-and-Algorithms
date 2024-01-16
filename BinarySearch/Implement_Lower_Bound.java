@@ -30,6 +30,8 @@ public class Implement_Lower_Bound {
                 ans = mid;
                 high = mid-1;
             }
+            // do not alter tha answer because this
+            // doesn't have a probability to be my answer
             else low = mid + 1;
         }
         return ans;
