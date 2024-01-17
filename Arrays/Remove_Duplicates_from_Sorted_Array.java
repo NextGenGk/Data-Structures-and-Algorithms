@@ -27,7 +27,9 @@ public class Remove_Duplicates_from_Sorted_Array {
         int i = 0;
         for (int j=1; j<nums.length; j++) {
             if (nums[i] != nums[j]) {
+                // update the element
                 nums[i+1] = nums[j];
+                // increment the index
                 i++;
             }
         }
