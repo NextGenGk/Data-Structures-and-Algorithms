@@ -84,6 +84,38 @@ public class BinaryPractice {
         return ans;
     }
 
+    // Floor & Ceil
+    public static int[] getFloorAndCeil(int[] a, int n, int x) {
+        // Write your code here.
+        int ceil = -1;
+        int floor = -1;
+
+        int low = 0;
+        int high = n - 1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            // maybe an answer
+            if (a[mid] <= x) {
+                floor = a[mid];
+                // look for smaller index on the left
+                low = mid + 1;
+            } else {
+                high = mid - 1; // look on the right
+            }
+
+            // maybe an answer
+            if (a[mid] >= x) {
+                ceil = a[mid];
+                // look for smaller index on the left
+                high = mid - 1;
+            } else {
+                low = mid + 1; // look on the right
+            }
+        }
+        return new int[]{floor, ceil};
+    }
+
     // Main Function
     public static void main(String[] args) {
         int[] arr = {3,5,8,15,19};
