@@ -21,6 +21,9 @@ public class Floor_Value {
                 low = mid+1;
             }
             // Else, we move to the left side
+            // do not alter tha answer because this
+            // doesn't have a probability to be my answer
+            // Case: {1, 2, 3, 3, 5, 8, 8, 10, 10, 11), target = 9
             else {
                 high = mid-1;
             }
