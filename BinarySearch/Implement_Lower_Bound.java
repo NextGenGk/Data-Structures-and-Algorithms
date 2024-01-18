@@ -32,6 +32,7 @@ public class Implement_Lower_Bound {
             }
             // do not alter tha answer because this
             // doesn't have a probability to be my answer
+            // Case: {1, 2, 3, 3, 5, 8, 8, 10, 10, 11), target = 9
             else low = mid + 1;
         }
         return ans;
