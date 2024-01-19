@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class BinaryPractice {
 
     // Implement lower bound
@@ -116,10 +119,34 @@ public class BinaryPractice {
         return new int[]{floor, ceil};
     }
 
+    // Find First & Last Occurrences
+    public static int[] firstAndLastPosition(ArrayList<Integer> arr, int n, int k) {
+        int first = -1;
+        int last = -1;
+
+        for (int i = 0; i < n; i++) {
+            if (arr.get(i) == k) {
+                if (first == -1) {
+                    first = i;
+                }
+                last = i;
+            }
+        }
+        return new int[]{first, last};
+    }
+
+    public static int[] firstAndLastPosition2(int[] arr, int n, int k) {
+        int lb = lowerBound(arr, k);
+        if (lb == n && lb != k) return new int[]{-1, -1};
+        return new int[]{lb, upperBound2(arr, k) - 1};
+    }
+
     // Main Function
     public static void main(String[] args) {
-        int[] arr = {3,5,8,15,19};
-        int ans = lowerBound(arr, 15);
-        System.out.println(ans);
+        int[] arr = {2, 4, 6, 8, 8, 8, 11, 13};
+        int n = 8, k = 8;
+        int[] ans = firstAndLastPosition2(arr, n, k);
+        System.out.println("The first and last positions are: "
+                + ans[0] + " " + ans[1]);
     }
 }
