@@ -88,3 +88,8 @@ first index, and high will point to the last index.
 5. Once, the ‘mid’ points to the target, the index will be returned.
 6. This process will be inside a loop and the loop will continue until low crosses high. If no index is found, we will return -1.
  */
+
+/*
+ Idea - Identify the sorted part (either left or right) & then check the given element between
+ low to mid & mid to high
+ */
