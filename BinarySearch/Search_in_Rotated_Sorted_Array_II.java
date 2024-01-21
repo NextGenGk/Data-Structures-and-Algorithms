@@ -78,6 +78,10 @@ public class Search_in_Rotated_Sorted_Array_II {
 
 // Algorithm : Optimal Solution
 /*
+Idea -  The idea is to trim the search space
+if (arr[low] == arr[mid] && arr[mid] == arr[high])
+In this case we move the low pointer and high pointer by +1 & -1 until we will not identify the sorted part
+
 1. Place the 2 pointers i.e. low and high: Initially, we will place the pointers like this: low will point to the
 first index, and high will point to the last index.
 2. Calculate the ‘mid’: Now, inside a loop, we will calculate the value of ‘mid’ using the following formula:
