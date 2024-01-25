@@ -341,6 +341,34 @@ public class BinaryPractice {
         return -1;
     }
 
+    // Find Peak Element
+    public static int findPeakElement(ArrayList<Integer> arr) {
+        // Write your code here.
+        int n = arr.size();
+
+        if (n == 1) return 0;
+        if (arr.get(0) > arr.get(1)) return 0;
+        if (arr.get(n-1) > arr.get(n-2)) return n - 1;
+
+        int low = 1;
+        int high = n-2;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            if (arr.get(mid) > arr.get(mid-1) && arr.get(mid) > arr.get(mid+1)) {
+                return mid;
+            }
+            else if (arr.get(mid) > arr.get(mid-1)) {
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+        return -1;
+    }
+
     // Main Function
     public static void main(String[] args) {
         int[] arr = {1,1,2,2,3,3,4,5,5,6,6};
