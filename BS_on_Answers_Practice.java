@@ -130,4 +130,50 @@ public class BS_on_Answers_Practice {
         noOfB += (cnt / k);
         return noOfB >= m;
     }
+
+    public static int smallestDivisor(int[] arr, int limit) {
+        int ans = -1;
+        int mini = Integer.MAX_VALUE, maxi = Integer.MIN_VALUE;
+        for (int i = 0; i < arr.length; i++) {
+            mini = Math.min(mini, arr[i]);
+            maxi = Math.max(maxi, arr[i]);
+        }
+
+//        for (int i=mini; i<=maxi; i++) {
+//
+//            if (findDivisor(arr, i) <= limit) {
+//                ans = i;
+//                break;
+//            }
+//        }
+//        return ans;
+        int low = mini;
+        int high = maxi;
+
+        while (low <= high) {
+            int mid = low + high / 2;
+            if (findDivisor(arr, mid) <= limit) {
+                high = mid - 1;
+            }
+            else {
+                low = mid + 1;
+            }
+        }
+        return low;
+    }
+
+    public static int findDivisor(int[] arr, int divisor) {
+        int total = 0;
+        for (int i=0; i<arr.length; i++) {
+            total += Math.ceil((double) arr[i] / (double) divisor);
+        }
+        return total;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        int limit = 8;
+        int ans = smallestDivisor(arr, limit);
+        System.out.println("The minimum divisor is: " + ans);
+    }
 }
