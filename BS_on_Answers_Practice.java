@@ -218,6 +218,25 @@ public class BS_on_Answers_Practice {
         return days;
     }
 
+    // Kth Missing Positive Integer
+    public static int missingK(int[] vec, int n, int k) {
+        // Write your code here.
+        int low =  0;
+        int high = n-1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int missing = vec[mid] - (mid + 1);
+            if (missing < k) {
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+        return (high + 1 + k);
+    }
+
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5};
         int limit = 8;
