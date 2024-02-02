@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class BS_on_Answers_Practice {
     // Find Square root of N
     int floorSqrt(int n) {
@@ -237,10 +239,106 @@ public class BS_on_Answers_Practice {
         return (high + 1 + k);
     }
 
+    // Aggressive Cows
+    public static int aggressiveCows(int []stalls, int k) {
+        //    Write your code here.
+        Arrays.sort(stalls);
+        int min = stalls[0];
+        int max = stalls[stalls.length-1];
+
+        // for (int i=1; i<max-min; i++) {
+        //     if (canWePlace(stalls, i, k)) {
+        //         continue;
+        //     }
+        //     else {
+        //         return i-1;
+        //     }
+        // }
+        // return max-min;
+
+        int low = 1;
+        int high = max - min;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (canWePlace(stalls, mid, k)) {
+                low = mid +  1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+        return high;
+    }
+
+    public static boolean canWePlace(int[] stalls, int distance, int cows) {
+        int countCows = 1;
+        int lastCoordinate = stalls[0];
+
+        for (int i=1; i<stalls.length; i++) {
+            if (stalls[i] - lastCoordinate >= distance) {
+                countCows += 1;
+                lastCoordinate = stalls[i];
+            }
+        }
+        if (countCows >= cows) return true;
+        return false;
+    }
+
+    // Book Allocation Problem
+    public static int findPages(int[] arr, int n, int students) {
+        // Write your code here.
+        if (students > n) return -1;
+        int summation = 0;
+        int maxi = Integer.MIN_VALUE;
+
+        for (int i=0; i<n; i++) {
+            summation += arr[i];
+            maxi = Math.max(maxi, arr[i]);
+        }
+
+//        for (int i=maxi; i<=summation; i++) {
+//            if (allocateBooks(arr, i) == students) {
+//                return i;
+//            }
+//        }
+//        return -1;
+
+        int low = maxi;
+        int high = summation;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (allocateBooks(arr, mid) > students) {
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+        return low;
+    }
+
+    public static int allocateBooks(int[]  arr, int noOfBooks) {
+        int student = 1;
+        int pagesStudents = 0;
+
+        for (int i=0; i<arr.length; i++) {
+            if (arr[i] + pagesStudents <= noOfBooks) {
+                pagesStudents += arr[i];
+            }
+            else {
+                student+=1;
+                pagesStudents = arr[i];
+            }
+        }
+        return student;
+    }
+
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4, 5};
-        int limit = 8;
-        int ans = smallestDivisor(arr, limit);
-        System.out.println("The minimum divisor is: " + ans);
+        int arr[] = {12, 34, 67, 90};
+        int n = 4, m = 2;
+        int ans = findPages(arr, n, m);
+        System.out.println(ans);
     }
 }
