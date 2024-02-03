@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BS_on_Answers_Practice {
@@ -333,6 +334,112 @@ public class BS_on_Answers_Practice {
             }
         }
         return student;
+    }
+
+    // Split array largest sum
+    public static int largestSubarraySumMinimized(int []a, int k) {
+        // Write Your Code Here
+        int n = a.length;
+
+        if (k > n) return -1;
+        int sum = 0;
+        int maxi = Integer.MIN_VALUE;
+
+        for (int i=0; i<n; i++) {
+            sum += a[i];
+            maxi = Math.max(a[i], maxi);
+        }
+
+        // for (int i=maxi; i<=sum; i++) {
+        //     if (countSubarray(a, i) == k) {
+        //         return i;
+        //     }
+        // }
+        // return maxi;
+
+        int low = maxi;
+        int high = sum;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (countSubarray(a, mid) > k) {
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+        return low;
+    }
+
+    public static int countSubarray(int[] a, int values) {
+        int n = a.length;
+        int arrayCount = 1;
+        int sumCount = 0;
+
+        for (int i=0; i<n; i++) {
+            if (a[i] + sumCount <= values) {
+                sumCount += a[i];
+            }
+            else {
+                arrayCount++;
+                sumCount = a[i];
+            }
+        }
+        return arrayCount;
+    }
+
+    // Painter's Partition
+    public static int findLargestMinDistance(ArrayList<Integer> boards, int k)
+    {
+        //    Write your code here.
+        int n = boards.size();
+
+        if (k > n) return -1;
+        int sum = 0;
+        int maxi = Integer.MIN_VALUE;
+
+        for (int i=0; i<n; i++) {
+            sum += boards.get(i);
+            maxi = Math.max(maxi, boards.get(i));
+        }
+
+        // for (int i=maxi; i<= sum; i++) {
+        //     if (findK(boards, i) == k) {
+        //         return i;
+        //     }
+        // }
+        // return maxi;
+
+        int low = maxi;
+        int high = sum;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (findK(boards, mid) > k) {
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+        return low;
+    }
+
+    public static int findK(ArrayList<Integer> boards, int values) {
+        int countK = 1;
+        int valuesOfK = 0;
+
+        for (int i=0; i<boards.size(); i++) {
+            if (valuesOfK + boards.get(i) <= values) {
+                valuesOfK += boards.get(i);
+            }
+            else {
+                countK++;
+                valuesOfK = boards.get(i);
+            }
+        }
+        return countK;
     }
 
     public static void main(String[] args) {
