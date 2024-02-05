@@ -475,6 +475,66 @@ public class BS_on_Answers_Practice {
         return 0;
     }
 
+    // Kth Element in Two Sorted Array
+    public static int kthElement(ArrayList<Integer> a, ArrayList<Integer> b, int n1, int n2, int k) {
+        if (n1 > n2) {
+            return kthElement(b, a, n2, n1, k);
+        }
+
+        int low = Math.max(0, k - n2);
+        int high = Math.min(n1, k);
+
+        while (low <= high) {
+            int mid1 = (low + high) / 2;
+            int mid2 = k - mid1;
+
+            int l1 = (mid1 > 0) ? a.get(mid1 - 1) : Integer.MIN_VALUE;
+            int l2 = (mid2 > 0) ? b.get(mid2 - 1) : Integer.MIN_VALUE;
+            int r1 = (mid1 < n1) ? a.get(mid1) : Integer.MAX_VALUE;
+            int r2 = (mid2 < n2) ? b.get(mid2) : Integer.MAX_VALUE;
+
+            if (l1 <= r2 && l2 <= r1) {
+                return Math.max(l1, l2);
+            } else if (l1 > r2) {
+                high = mid1 - 1;
+            } else {
+                low = mid1 + 1;
+            }
+        }
+        return 0;
+    }
+
+    // Find Maximum Numbers of One in Row Wise Sorted Matrix
+    public static int maximumOnesRow(ArrayList<ArrayList<Integer>> matrix, int n, int m) {
+        // Write your code here.
+        int index = -1;
+        int maxCount = 0;
+
+        for (int i = 0; i < n; i++) {
+            int countOnes = m - lowerBound(matrix.get(i), m, 1);
+            if (countOnes > maxCount) {
+                maxCount = countOnes;
+                index = i;
+            }
+        }
+        return index;
+    }
+
+    public static int lowerBound(ArrayList<Integer> arr, int n, int x) {
+        int low = 0;
+        int high = n - 1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (arr.get(mid) >= x) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return low;
+    }
+
     public static void main(String[] args) {
         int arr[] = {12, 34, 67, 90};
         int n = 4, m = 2;
