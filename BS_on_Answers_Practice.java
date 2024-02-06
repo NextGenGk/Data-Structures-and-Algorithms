@@ -535,6 +535,142 @@ public class BS_on_Answers_Practice {
         return low;
     }
 
+    // Search in a 2d Matrix
+    static boolean searchMatrix(ArrayList<ArrayList<Integer>> mat, int target) {
+        // Write your code here.
+        int n = mat.size();
+        int m = mat.get(0).size();
+
+        int low = 0;
+        int high = n * m - 1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int row = mid / m;
+            int col = mid % m;
+
+            if (mat.get(row).get(col) == target) {
+                return true;
+            }
+            else if (mat.get(row).get(col) > target) {
+                high = mid - 1;
+            }
+            else {
+                low = mid + 1;
+            }
+        }
+        return false;
+    }
+
+    // Search in a Row Wise Sorted Matrix
+    public static boolean searchElement(int [][]MATRIX, int target) {
+        // Write your code here.
+        int n = MATRIX.length;
+        int m = MATRIX[0].length;
+
+        int row = n-1;
+        int col = 0;
+
+        while (row >= 0 && col < m) {
+            if (MATRIX[row][col] == target) {
+                return true;
+            }
+            else if (MATRIX[row][col] > target) {
+                row--;
+            }
+            else {
+                col++;
+            }
+        }
+        return false;
+    }
+
+    // Find a Peak Element II
+    public static int[] findPeakGrid(int [][]G){
+        // Write your code here.
+        int n = G.length;
+        int m = G[0].length;
+
+        int low = 0;
+        int high = m-1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int maxRowElement = findMaxElement(G, n, mid);
+            int left = mid - 1 >= 0 ? G[maxRowElement][mid-1] : -1;
+            int right = mid + 1 < m ? G[maxRowElement][mid+1] : -1;
+            if ((G[maxRowElement][mid] > left) && (G[maxRowElement][mid] > right)) {
+                return new int[]{maxRowElement, mid, 1};
+            }
+            else if (G[maxRowElement][mid] < left) {
+                high = mid - 1;
+            }
+            else {
+                low = mid + 1;
+            }
+        }
+        return new int[]{0};
+    }
+
+    public static int findMaxElement(int[][] G, int rowLen, int col) {
+        int idx = -1;
+        int maxElement = Integer.MIN_VALUE;
+
+        for (int i=0; i<rowLen; i++) {
+            if (G[i][col] > maxElement) {
+                maxElement = G[i][col];
+                idx = i;
+            }
+        }
+        return idx;
+    }
+
+    // Matrix Median
+    public static int findMedian(int[][] arr, int n, int m) {
+        int low = 1;
+        int high = 1000000000;
+        int required = (n * m)/2;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int smallestEquals = countSmallerThanMid(arr, n, m, mid);
+            if (smallestEquals <= required) low = mid + 1;
+            else high = mid - 1;
+        }
+        return low;
+    }
+
+    // Count Smaller than Mid Value Function
+    // Time : O(n) * O(log2m) (where m is the length of the array)
+    public static int countSmallerThanMid(int[][] arr, int n, int m, int x) {
+        int count = 0;
+        for (int i=0; i<n; i++) {
+            count += upperBound(arr[i], x);
+        }
+        return count;
+    }
+
+    // Upper Bound Code
+    // Time - O(log2N), Space - O(1)
+    static int upperBound(int[] arr, int target) {
+        int n = arr.length;
+
+        int low = 0;
+        int high = n-1;
+        int ans = n;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (arr[mid] > target) {
+                ans = mid;
+                high = mid - 1;
+            }
+            else {
+                low = mid+1;
+            }
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         int arr[] = {12, 34, 67, 90};
         int n = 4, m = 2;
