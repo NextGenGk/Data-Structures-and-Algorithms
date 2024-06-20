@@ -76,6 +76,7 @@ public class Longest_SubArray_with_Sum_K_Positives {
         int sum = arr[0];
 
         while (right < n) {
+            // check still there is a subarray && summation is greater than k
             while (sum > k && left <= right) {
                 sum -= arr[left];
                 left++;
@@ -83,7 +84,9 @@ public class Longest_SubArray_with_Sum_K_Positives {
             if (sum == k) {
                 maxLen = Math.max(maxLen, right - left + 1);
             }
+            // move to next then add
             right++;
+            // check element is inside the boundary or not, then add
             if (right < n) {
                 sum += arr[right];
             }
