@@ -104,7 +104,7 @@ public class Set_Matrix_Zeroes {
         }
     }
 
-
+    // Main Function
     public static void main(String[] args) {
         int[][] matrix = {{1, 1, 1, 1},
                           {1, 0, 1, 1},
@@ -144,3 +144,5 @@ public class Set_Matrix_Zeroes {
 2. Iterate over the matrix and mark the rows and columns which are to be made zero.
 3. Iterate over the matrix again and make the rows and columns zero.
  */
+
+// Striver's Video Explanation : https://www.youtube.com/watch?v=N0MgLvceX7M
