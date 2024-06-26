@@ -17,6 +17,7 @@ public class Variation1 {
         return (int) ans;
     }
 
+    // Find particular element function
     static int pascalTriangle(int row, int col) {
         int element = (int) nCr(row-1, col-1);
         return element;

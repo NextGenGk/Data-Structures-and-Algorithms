@@ -18,6 +18,8 @@ public class Variation3 {
         return (int) ans;
     }
 
+    // Method 1 : Brute Force
+    // Time - O(N * N * R), Space - O(1)
     static List<List<Integer>> pascalTriangle(int n) {
         List<List<Integer>> ans = new ArrayList<>();
 
