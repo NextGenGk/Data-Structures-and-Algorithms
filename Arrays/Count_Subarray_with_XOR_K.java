@@ -45,31 +45,35 @@ public class Count_Subarray_with_XOR_K {
 
     // Method 3 - Optimal Solution (Using HashMap)
     // Time Complexity: O(N), Space Complexity: O(N)
-    static int subarrayWithXorK(int[] arr, int K) {
-        int n = arr.length;
-        int count = 0;
-
-        HashMap<Integer, Integer> map = new HashMap<>();
+    public static int subarrayWithXorK(int []arr, int k) {
+        int n = arr.length; //size of the given array.
         int xr = 0;
-        map.put(xr, 1);
+        HashMap<Integer, Integer> map = new HashMap<>(); //declaring the map.
+        map.put(xr, 1); //setting the value of 0.
+        int cnt = 0;
 
-        for (int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
+            // prefix XOR till index i:
             xr = xr ^ arr[i];
 
-            int x = xr ^ K;
+            //By formula: x = xr^k:
+            int x = xr ^ k;
 
+            // add the occurrence of xr^k
+            // to the count:
             if (map.containsKey(x)) {
-                count += map.get(x);
+                cnt += map.get(x);
             }
 
+            // Insert the prefix xor till index i
+            // into the map:
             if (map.containsKey(xr)) {
                 map.put(xr, map.get(xr) + 1);
-            }
-            else {
+            } else {
                 map.put(xr, 1);
             }
         }
-        return count;
+        return cnt;
     }
 
     // Main Method
