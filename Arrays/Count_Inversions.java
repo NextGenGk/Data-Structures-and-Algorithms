@@ -139,3 +139,5 @@ cnt += mid-left+1 (mid+1 = size of the left half)
 4. Inside mergeSort(), we will keep another counter variable that will store the final answer. With this cnt, we will add the answer returned from mergeSort() of the left half, mergeSort() of the right half, and merge().
 5. Finally, we will return this cnt, as our answer from mergeSort().
  */
+
+// Striver's Video Explanation : https://www.youtube.com/watch?v=AseUmwVNaoY
