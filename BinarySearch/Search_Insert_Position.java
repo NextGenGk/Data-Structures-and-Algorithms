@@ -70,3 +70,5 @@ We will declare the 2 pointers and an ‘ans’ variable initialized to n i.e. t
     2. Case 1 – If arr[mid] >= x: This condition means that the index mid may be an answer. So, we will update the ‘ans’ variable with mid and search in the left half if there is any smaller index that satisfies the same condition. Here, we are eliminating the right half.
     3. Case 2 – If arr[mid] < x: In this case, mid cannot be our answer and we need to find some bigger element. So, we will eliminate the left half and search in the right half for the answer.
  */
+
+// Striver Video Explanation : https://www.youtube.com/watch?v=6zhGS79oQ4k

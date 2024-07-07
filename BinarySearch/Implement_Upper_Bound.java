@@ -80,3 +80,5 @@ the first index and high will point to the last index.
     So, we will eliminate the left half and search in the right half for the answer.
 The above process will continue until the pointer low crosses high.
  */
+
+// Striver Video Explanation : https://www.youtube.com/watch?v=6zhGS79oQ4k
