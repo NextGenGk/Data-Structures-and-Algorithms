@@ -4,31 +4,21 @@ public class Find_Peak_Element {
 
     // Method 1 : Brute Force
     // Time - O(N), Space - O(1)
-//    static int findPeak(int[] arr) {
-//        int n = arr.length;
-//        if (n == 1) return 0;
-//
-//        for (int i=0; i<n; i++) {
-//            if (i == 0) {
-//                if (arr[i] > arr[i+1]) {
-//                    return i;
-//                }
-//            }
-//
-//            else if (i == n-1) {
-//                if (arr[i] > arr[i-1]) {
-//                    return i;
-//                }
-//            }
-//
-//            else {
-//                if (arr[i] > arr[i-1] && arr[i] > arr[i+1]) {
-//                    return i;
-//                }
-//            }
-//        }
-//        return -1;
-//    }
+    static int findPeak(int[] arr) {
+        int n = arr.length;
+
+        // edge cases
+        if (n == 0) return 0;
+        if (arr[0] > arr[1]) return 0;
+        if (arr[n-1] > arr[n-2]) return n-1;
+
+        for (int i=1; i<=n-2; i++) {
+            if (arr[i] > arr[i-1] && arr[i] > arr[i+1]) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     // Method 2 : Optimal Solution
     // Time - O(log2N), Space - O(1)
@@ -102,7 +92,7 @@ Explanation: In this example, there is only 1 peak that is at the index 0.
 /*
 1. Traverse the array from start to end.
 2. Check if the current element is greater than both of its neighbors.
-3. Seperate checking for first ans last element.
+3. Seperate checking for first and last element.
 3. If yes, then return the index of the current element.
 4. If not, then move to the next element.
 5. If no peak element found, then return -1.
@@ -178,3 +168,5 @@ It will consider the left peak and eliminate the right peak.
 
 The steps from 5 to 8 will be inside a loop and the loop will continue until low crosses high.
  */
+
+// Striver Video Explanation : https://www.youtube.com/watch?v=cXxmbemS6XM
