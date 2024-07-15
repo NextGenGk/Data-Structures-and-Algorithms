@@ -30,7 +30,7 @@ public class Find_The_Smallest_Divisor {
         //Find the summation of division values:
         int sum = 0;
         for (int i = 0; i < n; i++) {
-            sum += Math.ceil((double)(arr[i]) / (double)(div));
+            sum += (int) Math.ceil((double)(arr[i]) / (double)(div));
         }
         return sum;
     }
