@@ -33,7 +33,7 @@ public class Kth_Element_in_Two_Sorted_Array {
             if (mid1 < m) r1 = arr1[mid1];
             if (mid2 < n) r2 = arr2[mid2];
             if (mid1 - 1 >= 0) l1 = arr1[mid1-1];
-            if (mid2 - 1 >= 0) l1 = arr2[mid2-1];
+            if (mid2 - 1 >= 0) l2 = arr2[mid2-1];
 
             if (l1 <= r2 && l2 <= r1) {
                 return Math.max(l1, l2);
